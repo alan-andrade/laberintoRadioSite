@@ -16,7 +16,7 @@ addMsgToTable = (msg) ->
 
 # socket.IO
 
-socket = io.connect 'http://localhost:8080'
+socket = io.connect '<%= Yetting.chat_server %>'
 socket.on 'postMsg', (data) ->
   console.log data
   addMsgToTable(data)
