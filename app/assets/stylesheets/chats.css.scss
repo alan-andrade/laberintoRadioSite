@@ -1,7 +1,7 @@
 // Place all the styles related to the chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.well#chat{
-  height: 500px;
+#chat{
+  min-height: 80%;
   overflow: auto;
 }

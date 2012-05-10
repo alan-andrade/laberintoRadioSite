@@ -1,18 +1,21 @@
 .container
-  %h1 Chat
-  .well#chat
-    %table.table
-      %tbody
-        %tr
-          %td.span2 Simon dice:
-          %td.span10 Arriba!
-        %tr
-          %td.span2 Simon dice:
-          %td.span10 Arriba!
-  = form_tag '', class: 'form-inline' do
-    %fieldset
-      .control-group
-        .controls
-          .input-append
-            = text_field_tag 'field','',class: 'span11 myMsg', id: "appendedInputButton"
-            = submit_tag 'Enviar', class: 'btn sendMyMsg'
+  .row
+    .span6
+      %h1 Chat
+
+      .well#chat
+        %table.table
+          %tbody
+            %tr
+              %td.span1 Simon dice:
+              %td.span3 Arriba!
+      %form.form-inline
+        %fieldset
+          .control-group
+            .controls
+              .input-append
+                %input.myMsg.span4{type: 'text'}
+                %button.btn{type: 'button'}
+                  Enviar
+    .span4
+      %h1 Patrocinios
