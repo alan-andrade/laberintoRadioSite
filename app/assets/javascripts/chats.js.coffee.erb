@@ -22,6 +22,9 @@ socket.on 'postMsg', (data) ->
   addMsgToTable(data)
   return
 
+socket.on 'new_connection', (data) ->
+  console.log(data.nickname)
+
 $ ->
   $('.sendMyMsg').click (e) ->
     e.preventDefault()
