@@ -1,3 +1,18 @@
+$ ->
+  chatScroll = new iScroll('messages-container', { vScroll: true, vScrollBar: true })
+
+  $('.sendMyMsg').click (e) ->
+    e.preventDefault()
+    myMsg = $('.myMsg')
+    if myMsg.val() is ""
+      console.log 'tooltip'
+    else
+      socket.emit 'msg', { msg: myMsg.val() }
+      addMsgToTable({msg: myMsg.val()})
+      myMsg.val('')
+    return
+  return
+
 addMsgToTable = (msg) ->
   if msg.nickname is undefined
     msg.nickname = 'Yo'
@@ -25,16 +40,3 @@ socket.on 'postMsg', (data) ->
 socket.on 'new_connection', (data) ->
   console.log(data.nickname)
 
-$ ->
-  $('.sendMyMsg').click (e) ->
-    e.preventDefault()
-    myMsg = $('.myMsg')
-    if myMsg.val() is ""
-      console.log 'tooltip'
-    else
-      socket.emit 'msg', { msg: myMsg.val() }
-      addMsgToTable({msg: myMsg.val()})
-      myMsg.val('')
-    return
-
-  return

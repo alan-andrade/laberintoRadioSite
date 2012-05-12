@@ -1,21 +1,40 @@
 .container
-  .row
-    .span6
-      %h1 Chat
-
-      .well#chat
-        %table.table
-          %tbody
+  .row-fluid.chat
+    .span8
+      #messages-container
+        %table.table.table-condensed.table-striped
+          %tbody.row-fluid
             %tr
-              %td.span1 Simon dice:
-              %td.span3 Arriba!
-      %form.form-inline
-        %fieldset
-          .control-group
-            .controls
-              .input-append
-                %input.myMsg.span4{type: 'text'}
-                %button.btn{type: 'button'}
-                  Enviar
+              %td.span2.nickname yo dije
+              %td.span6.message y me contexto
+            %tr
+              %td.span2.nickname yo dije
+              %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
+            %tr
+              %td.span2 yo dije
+              %td.span6 y me contexto
+            %tr
+              %td.span2 yo dije
+              %td.span6 y me contexto
+            %tr
+              %td.span2 yo dije
+              %td.span6 y me contexto
+            %tr
+              %td.span2 yo dije
+              %td.span6 y me contexto
+            %tr
+              %td.span2.nickname yo dije
+              %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
+            %tr
+              %td.span2.nickname yo dije
+              %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
+            %tr
+              %td.span2.nickname yo dije
+              %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
+
+      = form_tag '/', class: 'form-inline'  do
+        = text_field_tag :message, nil, class: 'span8', placeholder: 'Escribe aqui tu mensaje'
+        .hidden-desktop
+          = button_tag 'Enviar', class: :btn
     .span4
-      %h1 Patrocinios
+      %h1 YUNO Buy!?

@@ -12,4 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require iscroll
+//= require underscore
+//= require backbone
 //= require_tree .
+//
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);

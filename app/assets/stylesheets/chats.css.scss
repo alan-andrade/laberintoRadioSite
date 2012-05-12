@@ -1,7 +1,15 @@
-// Place all the styles related to the chats controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-#chat{
-  min-height: 80%;
-  overflow: auto;
+.chat{
+  #messages-container{
+    margin-bottom: 10px;
+
+    &table tr td.nickname{
+      vertical-align: top;
+    }
+
+    // Landscape phones and down
+    @media (max-width: 480px) { height: 160px; }
+    @media (max-width: 767px) { height: 255px; }
+    @media (min-width: 768px) and (max-width: 979px) { height: 300px; }
+    @media (min-width: 1200px) { height: 400px; }
+  } //well
 }
