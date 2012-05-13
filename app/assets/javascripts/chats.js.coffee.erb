@@ -1,42 +1,23 @@
-$ ->
-  chatScroll = new iScroll('messages-container', { vScroll: true, vScrollBar: true })
-
-  $('.sendMyMsg').click (e) ->
-    e.preventDefault()
-    myMsg = $('.myMsg')
-    if myMsg.val() is ""
-      console.log 'tooltip'
-    else
-      socket.emit 'msg', { msg: myMsg.val() }
-      addMsgToTable({msg: myMsg.val()})
-      myMsg.val('')
-    return
-  return
-
-addMsgToTable = (msg) ->
-  if msg.nickname is undefined
-    msg.nickname = 'Yo'
-
-  console.log msg
-  tableBody = $('.table tbody')
-
-  tr = $('<tr>')
-
-  $('<td>').text(msg.nickname).appendTo tr
-  $('<td>').text(msg.msg).appendTo tr
-
-  tr.appendTo tableBody
-  $('#chat').animate {scrollTop: tableBody.height()}
-  return
-
 # socket.IO
+# Yetting.chat_server
 
-socket = io.connect '<%= Yetting.chat_server %>'
-socket.on 'postMsg', (data) ->
-  console.log data
-  addMsgToTable(data)
-  return
+# iScroll
+loaded = ->
+	myScroll = new iScroll('messages-container')
+document.addEventListener('DOMContentLoaded', loaded, false)
+# iScroll
 
-socket.on 'new_connection', (data) ->
-  console.log(data.nickname)
+# custom
+$ ->
+  laberintoChat = new Laberinto.ChatRoom()
 
+  $('form').submit (e) ->
+    e.preventDefault()
+    nickname  = 'alan'
+    input     = $('input#message_box')
+    content   = input.val()
+    return if content is ''
+    toSend = new Laberinto.Message({nickname: nickname, message: content})
+    laberintoChat.appendMessage(toSend)
+    input.val('')
+    false

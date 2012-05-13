@@ -33,8 +33,11 @@
               %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
 
       = form_tag '/', class: 'form-inline'  do
-        = text_field_tag :message, nil, class: 'span8', placeholder: 'Escribe aqui tu mensaje'
+        = text_field_tag :message_box, nil, class: 'span8', placeholder: 'Escribe aqui tu mensaje'
         .hidden-desktop
           = button_tag 'Enviar', class: :btn
     .span4
       %h1 YUNO Buy!?
+
+- content_for :js do
+  = javascript_include_tag 'chat/bb-chat', 'chats'
