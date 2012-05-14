@@ -1,43 +1,20 @@
 .container
-  .row-fluid.chat
-    .span8
+  .row-fluid
+    .span8.chat
       #messages-container
         %table.table.table-condensed.table-striped
-          %tbody.row-fluid
+          %thead
             %tr
-              %td.span2.nickname yo dije
-              %td.span6.message y me contexto
-            %tr
-              %td.span2.nickname yo dije
-              %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
-            %tr
-              %td.span2 yo dije
-              %td.span6 y me contexto
-            %tr
-              %td.span2 yo dije
-              %td.span6 y me contexto
-            %tr
-              %td.span2 yo dije
-              %td.span6 y me contexto
-            %tr
-              %td.span2 yo dije
-              %td.span6 y me contexto
-            %tr
-              %td.span2.nickname yo dije
-              %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
-            %tr
-              %td.span2.nickname yo dije
-              %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
-            %tr
-              %td.span2.nickname yo dije
-              %td.span6.message y me contexto jlasijfd slidjflasijdf lijfliwjelwiejflsij flijsld fijalsdfij alsifjleijflasijefil2jl1ij2 l12i3j1 l23ijl ijlsijdflasidjfs
+              %th.span2
+              %th.span6
+          %tbody
 
       = form_tag '/', class: 'form-inline'  do
         = text_field_tag :message_box, nil, class: 'span8', placeholder: 'Escribe aqui tu mensaje'
         .hidden-desktop
           = button_tag 'Enviar', class: :btn
     .span4
-      %h1 YUNO Buy!?
-
+      = image_tag 'http://cdn.memegenerator.net/instances/400x/9190616.jpg', class: :span4
 - content_for :js do
-  = javascript_include_tag 'chat/bb-chat', 'chats'
+  = javascript_include_tag "#{Yetting.chat_server}/socket.io/socket.io.js"
+  = javascript_include_tag 'laberinto.backbone', 'chats'
