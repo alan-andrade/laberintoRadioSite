@@ -14,7 +14,7 @@
         .hidden-desktop
           = button_tag 'Enviar', class: :btn
     .span4
-      = image_tag 'http://cdn.memegenerator.net/instances/400x/9190616.jpg', class: :span4
 - content_for :js do
   = javascript_include_tag "#{Yetting.chat_server}/socket.io/socket.io.js"
-  = javascript_include_tag 'laberinto.backbone', 'chats'
+  = javascript_include_tag 'iscroll', 'underscore', 'laberinto.chat'
+  = javascript_include_tag 'chat'

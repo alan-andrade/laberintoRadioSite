@@ -1,0 +1,20 @@
+# iScroll
+document.addEventListener 'touchmove', (e) ->
+  e.preventDefault()
+, false
+
+loaded = ->
+  myScroll = new iScroll('messages-container')
+  return
+
+document.addEventListener 'DOMContentLoaded', ->
+  setTimeout loaded, 200
+, false
+
+# chat UI
+$ ->
+  window.chat = new Laberinto.Chat {
+    inputbox:     $('input#message_box')
+    container:    $('table tbody')
+    socket_addr:  '<%= Yetting.chat_server %>'
+  }
