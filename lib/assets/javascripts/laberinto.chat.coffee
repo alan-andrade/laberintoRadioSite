@@ -26,16 +26,24 @@ _.extend(Chat.prototype, {
     this.container.prepend this.msg.build()
 
   listen: ->
-    chat = this
-    this.socket.on 'new_connection', (data) ->
-      chat.msg.set _.extend(data, { className:'notice'})
-      console.log chat.msg
-      chat.print()
+    chat    = this
+    socket  = this.socket
 
-    this.socket.on 'receive_message', (data) ->
-      chat.msg.set _.extend(data, { className:'message' })
-      console.log chat.msg
+    socket.on 'new_connection', (data) ->
+      chat.msg.set _.extend(data, { className:'notice'})
       chat.print()
+      return
+
+    socket.on 'receive_message', (data) ->
+      chat.msg.set _.extend(data, { className:'message' })
+      chat.print()
+      return
+
+    socket.on 'user_leave', (data) ->
+      chat.msg.set _.extend(data, { className:'notice' })
+      chat.print()
+      return
+    return
 })
 
 Message = (content={}) ->
@@ -54,7 +62,7 @@ _.extend(Message.prototype, {
     this.attributes[attribute]
 
   el: ->
-    $(document.createElement this.tag)
+    $(document.createElement this.tag).addClass(this.get('className'))
 
   build: ->
     className = this.get 'className'
