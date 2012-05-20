@@ -2,4 +2,4 @@ development:
   chat_server: 'http://localhost:8080'
 
 production:
-  chat_server: 'http://50.18.252.225:8080'
+  chat_server: 'http://184.169.162.15:8080'
