@@ -2,17 +2,18 @@ $ ->
   $('.wait').hide()
   $('.jplayer').jPlayer({
     swfPath: 'assets/jPlayer/'
+    supplied: 'mp3'
+    solution: 'flash,html'
+    errorAlerts: true
     volume: 1
     cssSelectorAncestor: '.player'
     cssSelector: {
       play: '.play'
       pause: '.pause'
     }
-    wmode: 'window'
     ready: ->
       $(this).jPlayer( 'setMedia' , {
-        'mp3' : 'http://hobbes.idobi.com/;stream.mp3'
-        'poster' : 'http://idobi.com/wp-content/themes/idobi-2011/images/header.jpg'
+        'mp3' : 'http://70.38.54.111:9032/;stream/1'
       })
 
     waiting: ->
