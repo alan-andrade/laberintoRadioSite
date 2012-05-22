@@ -4,9 +4,9 @@
     .span12
       .jplayer
       .player
-        %a.btn.play{href:'javascript:;'}
+        %a.btn.play{href:'javascript:();'}
           %i.icon-play
-        %a.btn.pause{href:'javascript:;'}
+        %a.btn.pause{href:'javascript:();'}
           %i.icon-pause.pause
     .span8.chat
       #messages-container
@@ -23,7 +23,7 @@
           = button_tag 'Enviar', class: :btn
     .span4
 - content_for :js do
-  = javascript_include_tag 'jPlayer/jquery.jplayer.min.js' , 'laberinto.player'
+  = javascript_include_tag 'sm/soundmanager2.js' , 'laberinto.player'
   = javascript_include_tag "#{Yetting.chat_server}/socket.io/socket.io.js"
   = javascript_include_tag 'iscroll', 'underscore', 'laberinto.chat'
   = javascript_include_tag 'chat'
