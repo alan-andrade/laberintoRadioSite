@@ -1,27 +1,33 @@
 .container
-  .row-fluid
+  .row
     .span12
-    .span12
-      .jplayer
-      .player
-        %a.btn.play{href:'#'}
-          %i.icon-play
-        %a.btn.pause{href:'#'}
-          %i.icon-pause.pause
-    .span8.chat
-      #messages-container
-        %table.table.table-condensed.table-striped
-          %thead
-            %tr
-              %th.span2
-              %th.span6
-          %tbody
+    .row
+      .span12
+        .jplayer
+        .player
+          %a.btn.play{href:'#'}
+            %i.icon-play
+          %a.btn.pause{href:'#'}
+            %i.icon-pause.pause
+    .row
+      .span8.chat
+        #messages-container
+          %table.table.table-condensed.table-striped
+            %thead
+              %tr
+                %th.span2
+                %th.span6
+            %tbody
 
-      = form_tag '/', class: 'form-inline'  do
-        = text_field_tag :message_box, nil, class: 'span8', placeholder: 'Escribe aqui tu mensaje'
-        .hidden-desktop
-          = button_tag 'Enviar', class: :btn
-    .span4
+        = form_tag '/', class: 'form-inline'  do
+          = text_field_tag :message_box, nil, class: 'span8', placeholder: 'Escribe aqui tu mensaje'
+          .hidden-desktop
+            = button_tag 'Enviar', class: :btn
+      .span4.notice
+        = image_tag 'laberinto.jpg'
+        .well
+          %p Estamos trabajando en un nuevo sitio.
+          %p Por lo pronto esperemos que te guste el chat.
 - content_for :js do
   = javascript_include_tag 'sm/soundmanager2.js' , 'laberinto.player'
   = javascript_include_tag "#{Yetting.chat_server}/socket.io/socket.io.js"
