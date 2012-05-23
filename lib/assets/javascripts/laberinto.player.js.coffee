@@ -1,8 +1,12 @@
 $ ->
-  $('.play').click ->
+  $('.play').click (e) ->
+    e.preventDefault()
     soundManager.play 'stream'
-  $('.pause').click ->
+    return
+  $('.pause').click (e) ->
+    e.preventDefault()
     soundManager.pause 'stream'
+    return
 
 soundManager.url = 'assets/sm/swf/'
 soundManager.onready ->
