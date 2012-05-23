@@ -39,9 +39,9 @@ $ ->
   #return
 soundManager.url = 'assets/sm/swf/'
 soundManager.onready ->
-  # SM2 has loaded - now you can create and play sounds!
   soundManager.createSound
     id: 'stream'
-    url: 'http://neon.wavestreamer.com:6595/'
+    url: 'http://neon.wavestreamer.com:6555/'
+    stream: true
     autoload: true
     autoplay: true
