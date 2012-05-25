@@ -13,15 +13,31 @@
   %body
     .container-fluid
       .row-fluid
-        .span12
-      .row-fluid
-        .span3
-          %h1 Menu
-          %ul.unstyled
-            %li Inicio
-            %li Transmision
-            %li Quienes Somos
-            %li Ambiente de trabajo
-            %li Anunciate
-        .span9
+        .span2
+          %ul.nav.nav-pills.nav-stacked
+            %li
+              %a{href: '#'}
+                %i.icon-home
+                Inicio
+            %li
+              %a{href:'#'}
+                %i.icon-signal
+                Transmision
+            %li
+              %a{href:'#'}
+                %i.icon-calendar
+                Programacion
+            %li
+              %a{href:'#'}
+                %i.icon-user
+                Quienes Somos
+            %li
+              %a{href:'#'}
+                %i.icon-briefcase
+                Ambiente de trabajo
+            %li
+              %a{href:'#'}
+                %i.icon-bullhorn
+                Anunciate
+        .span10
           = yield
