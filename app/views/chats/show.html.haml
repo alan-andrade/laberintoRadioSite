@@ -4,11 +4,13 @@
     .row
       .span12
         .jplayer
-        .player
+        .jaudio
           %a.btn.play{href:'#'}
             %i.icon-play
           %a.btn.pause{href:'#'}
             %i.icon-pause.pause
+          .no-solution
+            %p Actualiza tu navegador para escucharnos
     .row
       .span8.chat
         #messages-container
@@ -29,7 +31,7 @@
           %p Estamos trabajando en un nuevo sitio.
           %p Por lo pronto esperemos que te guste el chat.
 - content_for :js do
-  = javascript_include_tag 'sm/soundmanager2.js' , 'laberinto.player'
+  = javascript_include_tag 'jquery.jplayer/jquery.jplayer.js', 'laberinto.player'
   = javascript_include_tag "#{Yetting.chat_server}/socket.io/socket.io.js"
   = javascript_include_tag 'iscroll', 'underscore', 'laberinto.chat'
   = javascript_include_tag 'chat'
