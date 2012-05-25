@@ -1,0 +1,27 @@
+!!! 5
+
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title Laberinto Radio : double split
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = yield :js
+    = csrf_meta_tags
+
+  %body
+    .container-fluid
+      .row-fluid
+        .span12
+      .row-fluid
+        .span3
+          %h1 Menu
+          %ul.unstyled
+            %li Inicio
+            %li Transmision
+            %li Quienes Somos
+            %li Ambiente de trabajo
+            %li Anunciate
+        .span9
+          = yield
