@@ -11,33 +11,47 @@
     = csrf_meta_tags
 
   %body
-    .container-fluid
-      .row-fluid
-        .span2
-          %ul.nav.nav-pills.nav-stacked
-            %li
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %ul.nav
+            %li.active
               %a{href: '#'}
-                %i.icon-home
+                %i.icon-home.icon-white
                 Inicio
             %li
               %a{href:'#'}
-                %i.icon-signal
+                %i.icon-signal.icon-white
                 Transmision
             %li
               %a{href:'#'}
-                %i.icon-calendar
+                %i.icon-calendar.icon-white
                 Programacion
             %li
               %a{href:'#'}
-                %i.icon-user
+                %i.icon-user.icon-white
                 Quienes Somos
             %li
               %a{href:'#'}
-                %i.icon-briefcase
+                %i.icon-briefcase.icon-white
                 Ambiente de trabajo
             %li
               %a{href:'#'}
-                %i.icon-bullhorn
+                %i.icon-bullhorn.icon-white
                 Anunciate
-        .span10
-          = yield
+          %ul.nav.pull-right
+            %li
+              %a.brand
+                Laberinto Radio
+    .container{style:'margin-top: 60px;'}
+      = yield
+    .footer{style: 'background: grey; margin-top: 40px; padding-top: 20px;'}
+      .container
+        %span12
+          %h2 We use HTML 5 !
+          %a{ href: 'http://www.w3.org/html/logo/' }
+            %img{ src: 'http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-css3-device-multimedia-semantics.png',
+              width: "261",
+              height: "64",
+              alt: "HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, Multimedia, and Semantics",
+              title: "HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, Multimedia, and Semantics" }
