@@ -2,7 +2,7 @@ $ ->
   $('.jplayer').jPlayer
     ready: ->
       $(this).jPlayer 'setMedia',
-        mp3: 'http://neon.wavestreamer.com:6595/;stream/1'
+        mp3: '<%= Yetting.shoutcast %>'
       return
     swfPath: 'assets/jquery.jplayer/'
     solution: 'flash,html'
