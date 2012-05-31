@@ -2,7 +2,7 @@ $ ->
   $('.jplayer').jPlayer
     ready: ->
       $(this).jPlayer 'setMedia',
-        mp3: '<%= Yetting.shoutcast %>'
+        mp3: '<%= Yetting.shoutcast["stream"] %>'
       return
     swfPath: 'assets/jquery.jplayer/'
     solution: 'flash,html'

@@ -8,6 +8,7 @@ gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'haml-rails'
 gem 'yettings'
+gem 'httparty'
 
 
 # Gems used only for assets and not required
