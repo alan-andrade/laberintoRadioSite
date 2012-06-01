@@ -1,8 +1,8 @@
 development:
   chat_server: 'http://localhost:8080'
   shoutcast: &shoutcast
-    base: 'http://laberintoradio.net:8000'
-    stream: 'http://laberintoradio.net:8000/laberinto'
+    base:   'http://localhost:3000'
+    stream: '/laberinto'
     auth:
       username: 'admin'
       password: 'laberintoadmin'
@@ -10,4 +10,5 @@ development:
 production:
   chat_server: 'http://184.169.162.15:8080'
   shoutcast:
-    <<: *shoutcast
+    base:   'http://laberintoradio.net:8000'
+    stream: '/laberinto'

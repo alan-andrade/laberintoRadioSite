@@ -1,6 +1,12 @@
-:javascript
-  $(function(){
-    setInterval(code,5000);
-  })
+= content_for :js do
+  = javascript_include_tag 'https://www.google.com/jsapi', 'locutor.js'
 
 %h1 Stats
+.lr.chart
+
+.lr.up.btn
+  %i.icon-arrow-up
+.lr.down.btn
+  %i.icon-arrow-down
+.lr.stop.btn
+  %i.icon-stop

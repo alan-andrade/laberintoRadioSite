@@ -3,7 +3,7 @@ class PublicController < ApplicationController
   def index; end
   def locutor; end
 
-  def stats
-    Shoutcast.get_listeners
+  def listeners
+    render json: Shoutcast.get_listeners
   end
 end
