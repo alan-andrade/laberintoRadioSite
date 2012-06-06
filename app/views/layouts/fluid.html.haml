@@ -11,20 +11,20 @@
     = csrf_meta_tags
 
   %body
-    .navbar.navbar-fixed-top
+    %nav.navbar.navbar-fixed-top
       .navbar-inner
         .container
           %ul.nav
             %li
-              %a{href: index_path }
+              = link_to index_path do
                 %i.icon-home.icon-white
                 Inicio
             %li
-              %a{href: chat_path}
+              = link_to chat_path do
                 %i.icon-signal.icon-white
                 Transmision
             %li
-              %a{href: programacion_path }
+              = link_to programacion_path do
                 %i.icon-calendar.icon-white
                 Programacion
             %li
@@ -47,11 +47,5 @@
       = yield
     .footer{style: 'background: grey; margin-top: 40px; padding-top: 20px;'}
       .container
-        %span12
-          %h2 We use HTML 5 !
-          %a{ href: 'http://www.w3.org/html/logo/' }
-            %img{ src: 'http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-css3-device-multimedia-semantics.png',
-              width: "261",
-              height: "64",
-              alt: "HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, Multimedia, and Semantics",
-              title: "HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, Multimedia, and Semantics" }
+        .span12
+          %h2 Footer

@@ -1,3 +1,16 @@
+:css
+  .program{
+    margin-top:    15px;
+    margin-bottom: 15px;
+    padding-top:    15px;
+    padding-bottom: 15px;
+    border-bottom:  1px dashed #eee;
+  }
+  .program:hover{
+    background: #ffe;
+    border-bottom:  1px dotted #333;
+  }
+
 .row
   .span12
     .page-header
@@ -6,28 +19,30 @@
 .row
   .span12
     %h3{style: 'font-style: italic;'} Comunidad
-    %br
-.well
+
+.program
   .row
     = link_to image_tag('la_voz.png', class: 'span1'), program_path
     .span2
-      %h3 La Voz de Satelite
+      %h3 La voz de satelite
       .btn.btn-primary
         %i.icon-play.icon-white
     .span1
       %p.label.label-inverse
         Lunes
-      %p
+      %p.label.label-info
         8:00 pm
-    .span4
+
+    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    .span2
       %blockquote.pull-right
-        = image_tag 'http://www.espnmediazone3.com/us/wp-content/uploads/2009/11/Sutcliffe_John.jpg', style: 'float: left; width: 50px; margin-right: 5px;', class: :thumbnail
         Decidimos hacer este espacio para crear conciencia.
         %small
           Juan Manuel
-    .span3
+
+    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    .span2
       %blockquote.pull-right
-        = image_tag 'http://www.espnmediazone3.com/us/wp-content/uploads/2009/11/Sutcliffe_John.jpg', style: 'float: left; width: 50px; margin-right: 5px;', class: :thumbnail
         Creo en el poder de una ciudad que se basa en la organizacion.
         %small
           Fernando Mendizabal
@@ -36,7 +51,7 @@
   .span12
     %h3{style: 'font-style: italic;'} Politica
 
-.well
+.program
   .row
     = image_tag 'el_trompo.png', class: 'span1'
     .span2
@@ -46,11 +61,12 @@
     .span1
       %p.label.label-inverse
         Lunes
-      %p
+      %p.label.label-info
         9:00 pm
-    .span4
+
+    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    .span2
       %blockquote.pull-right
-        = image_tag 'http://www.espnmediazone3.com/us/wp-content/uploads/2009/11/Sutcliffe_John.jpg', style: 'float: left; width: 50px; margin-right: 5px;', class: :thumbnail
         La democracia es el aparato que mueve al mundo, y la democracia es mi pasion.
         %small
           Jose Luis Barrera
@@ -58,114 +74,30 @@
 .row
   .span12
     %h3{style: 'font-style: italic;'} Deportes
-    %br
-.row
-  = image_tag 'el_ojo.png', class: 'span1 thumbnail'
-  .span2
-    %h3 Ojo del deporte
-    .btn.btn-primary
-      %i.icon-play.icon-white
-  .span1
-    %p
-      %i Lunes
-      %br
-      1000 pm
-  .span3
-    %blockquote.pull-right
-      = image_tag 'http://www.espnmediazone3.com/us/wp-content/uploads/2009/11/Sutcliffe_John.jpg', style: 'float: left; width: 50px; margin-right: 5px;', class: :thumbnail
-      El manchester es mi religion
-      %small
-        Ernesto Horta
-  .span2
-    %blockquote.pull-right
-      = image_tag 'http://www.espnmediazone3.com/us/wp-content/uploads/2009/11/Sutcliffe_John.jpg', style: 'float: left; width: 50px; margin-right: 5px;', class: :thumbnail
-      La nfl es el deporte que juega Dios.
-      %small
-        Acerero Arias
-  .span2
-    %blockquote.pull-right
-      = image_tag 'http://www.espnmediazone3.com/us/wp-content/uploads/2009/11/Sutcliffe_John.jpg', style: 'float: left; width: 50px; margin-right: 5px;', class: :thumbnail
-      Cubrir las notas de futbol es mi hobbie, mi trabajo es transmitir el trasfondo de la informacion futbolistica.
-      %small
-        Pochibanda
 
-%hr
+.program
+  .row
+    = image_tag 'el_ojo.png', class: 'span1 thumbnail'
+    .span2
+      %h3 Ojo del deporte
+      .btn.btn-primary
+        %i.icon-play.icon-white
+    .span1
+      %p.label.label-inverse
+        Lunes
+      %p.label.label-info
+        10:00 pm
 
-.row
-  = image_tag 'el_corporativo.png', class: 'span1 thumbnail'
-  .span2
-    %h3 Negocios
-  .span2
-    %p
-      %i Martes
-      %br
-      800pm
-  .span2
-    %blockquote.pull-right
-      Un buen negocio, tiene frutos eternamente.
-      %small
-        Armando Torres
-  .span2
-    %blockquote.pull-right
-      Mi responsabilidad es impulsar al emprededor a su gloria para asi, alcanzar la mia.
-      %small
-        Jose Luis Del Moral
-%hr
+    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    .span2
+      %blockquote.pull-right
+        El manchester es mi religion
+        %small
+          Ernesto Horta
 
-.row
-  = image_tag 'masa_critica.png', class: 'span1 thumbnail'
-  .span2
-    %h3 Pensamiento Critico
-  .span2
-    %p
-      %i Miercoles
-      %br
-      900pm
-  .span2
-    %blockquote.pull-right
-      El conocimiento y el razonamiento es la llave de la libertad, no la biblia ni niguna otra religion.
-      %small
-        Gerardo Romero
-  .span2
-    %blockquote.pull-right
-      Si tuviera que escoger entre un ateo y 100 catolicos, me voy con mi compadre el ateo.
-      %small
-        Link 666
-%hr
-
-.row
-  = image_tag 'la_macana.png', class: 'span1 thumbnail'
-  .span2
-    %h3 Entretenimiento
-  .span2
-    %p
-      %i Jueves
-      %br
-      1000 pm
-  .span2
-    %blockquote.pull-right
-      La risa es el mejor alimento para el alma. Yo se alimentar el alma bastante bien.
-      %small
-        Luis Palicio
-  .span2
-    %blockquote.pull-right
-      Le miento la madre a CFE, ahora tengo trabajar! Laberinto Radio es mi vitamina para la semana.
-      %small
-        Jorge Contreras
-%hr
-
-.row
-  = image_tag 'el_cadaver.png', class: 'span1 thumbnail'
-  .span2
-    %h3 Arte y Cultura
-  .span2
-    %p
-      %i Domingo
-      %br
-      10pm
-  .span2
-    %blockquote.pull-right
-      Arte? Cultura? Yo se sobre dibujos, lapices y sacapuntas. Pero leo 5 libros al mes. Eso sirve?
-      %small
-        Francisco Beltran
-
+    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    .span2
+      %blockquote.pull-right
+        La nfl es el deporte que juega Dios.
+        %small
+          Acerero Arias
