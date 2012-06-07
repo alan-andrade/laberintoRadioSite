@@ -1,5 +1,9 @@
-# Require google api before.
+
 LR = window.LR = {}
+
+###
+Google Gauge to indicate listeners quantity.
+###
 
 class LR.Gauge
 
@@ -22,41 +26,109 @@ class LR.Gauge
   @redraw: ->
     @chart.draw @data, @options
 
-  @change: ( val ) ->
+  @setValue: ( val ) ->
     @data.setValue( 0, 0, val )
     @redraw()
 
   @getValue: ->
     @data.getValue( 0, 0 )
 
-class LR.Shoutcast
-  @Gauge = LR.Gauge
 
-  @setup: ->
-    $.ajaxSetup
+###
+  Shoutcast interface to query and integrate with google Gauge and google Map
+###
+
+class LR.Shoutcast
+  @Gauge      = LR.Gauge
+  @listeners  = []
+
+  @getListeners : ->
+    $.ajax
       url: '/listeners'
       complete: ->
-      success:  @handlers.success
+      success:  LR.Shoutcast.handlers.success
       error:    ->
 
   @poll: ( action ) ->
     switch action
       when 'start'
-        @setup()
-        @polling = setInterval $.ajax, 10000
+        @polling = setInterval @getListeners, 10000
       when 'stop'
         clearInterval @polling
 
   @handlers:
-    success: ( data ) ->
-      console.log data
+    success: ( response ) ->
+      LR.Shoutcast.cleanResponse  ( response )
+      LR.Shoutcast.updateGauge    ( LR.Shoutcast.listeners.length )
+      LR.Map.update               ( LR.Shoutcast.listeners )
+
+  @updateGauge: ( listeners ) ->
+    @Gauge.setValue( listeners )
+
+  @cleanResponse: ( response ) =>
+    listeners = response.SHOUTCASTSERVER.LISTENERS
+    if listeners is null
+      listeners = []
+    else
+      if listeners.LISTENER.length is undefined
+        @listeners = [listeners.LISTENER] # 1 listener
+      else
+        @listeners =  listeners.LISTENER # more than 1 listener
+
+###
+  Google Map for pinning the new listeners.
+###
+
+class LR.Map
+  @element: ->
+    $('.lr.map').get(0)
+
+  @markers: []
+  @cleanMarkers: ->
+    for marker in @markers
+      marker.setMap(null)
+    @markers = []
+
+  @options:
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+    center: new google.maps.LatLng(23, -102)
+    zoom: 4
+
+  @draw: ->
+    @map = new google.maps.Map( @element() , @options )
+    return
+
+  @update: ( listeners ) ->
+    @cleanMarkers()
+    for listener in listeners
+      LR.IPtrans.translate( listener.HOSTNAME, LR.Map.drawMarker )
+
+  @drawMarker: ( ipAsCoords ) =>
+    lat = parseFloat(ipAsCoords.latitude)
+    lng = parseFloat(ipAsCoords.longitude)
+    position  = new google.maps.LatLng lat, lng
+    marker    = new google.maps.Marker
+      animation : google.maps.Animation.BOUNCE
+      position  : position
+      map       : @map
+    @markers.push marker
+    return
+
+###
+  IP Geolocalization
+###
+
+class LR.IPtrans
+  @translate: ( ip, callback ) ->
+    $.ajax
+      url: "http://freegeoip.net/json/#{ip}"
+      success: callback
 
 $ ->
 
-  $('.lr.up').click   -> LR.Gauge.change( LR.Gauge.getValue() + 1 )
-  $('.lr.down').click -> LR.Gauge.change( LR.Gauge.getValue() - 1 )
   $('.lr.stop').click -> LR.Shoutcast.poll('stop')
 
   LR.Gauge.draw()
-  LR.Shoutcast.poll 'start'
+  LR.Shoutcast.poll('start')
+  LR.Map.draw()
   return
