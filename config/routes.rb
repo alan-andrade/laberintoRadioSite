@@ -5,5 +5,5 @@ Laberintoradio::Application.routes.draw do
   get :locutor,   to: 'public#locutor'
   get :listeners, to: 'public#listeners'
   get 'chat',     to: 'chats#show'
-  root to: 'chats#show'
+  root to: 'public#index'
 end
