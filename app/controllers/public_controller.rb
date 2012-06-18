@@ -3,4 +3,5 @@ class PublicController < ApplicationController
   def index; end
   def programacion; end
   def program; end
+  def pending;end
 end

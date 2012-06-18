@@ -1,20 +1,7 @@
-:css
-  .program{
-    margin-top:    15px;
-    margin-bottom: 15px;
-    padding-top:    15px;
-    padding-bottom: 15px;
-    border-bottom:  1px dashed #eee;
-  }
-  .program:hover{
-    background: #ffe;
-    border-bottom:  1px dotted #333;
-  }
-
 .row
   .span12
     .page-header
-      %h1 Programacion
+      %h1 Programación
 
 .row
   .span12
@@ -22,25 +9,23 @@
 
 .program
   .row
-    = link_to image_tag('la_voz.png', class: 'span1'), program_path
+    = image_tag('la_voz.png', class: 'span1')
     .span2
-      %h3 La voz de satelite
-      .btn.btn-primary
-        %i.icon-play.icon-white
+      %h3 La voz de satélite
     .span1
       %p.label.label-inverse
         Lunes
       %p.label.label-info
-        8:00 pm
+        7:30 pm
 
-    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    = image_tag 'https://si0.twimg.com/profile_images/1900209315/logosaleyvale.jpg', class: 'thumbnail span1'
     .span2
       %blockquote.pull-right
         Decidimos hacer este espacio para crear conciencia.
         %small
           Juan Manuel
 
-    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    = image_tag 'https://sphotos.xx.fbcdn.net/hphotos-snc6/227211_10150185196803390_4542777_n.jpg', class: 'thumbnail span1'
     .span2
       %blockquote.pull-right
         Creo en el poder de una ciudad que se basa en la organizacion.
@@ -49,27 +34,25 @@
 
 .row
   .span12
-    %h3{style: 'font-style: italic;'} Politica
+    %h3{style: 'font-style: italic;'} Política
 
 .program
   .row
     = image_tag 'el_trompo.png', class: 'span1'
     .span2
       %h3 El trompo
-      .btn.btn-primary
-        %i.icon-play.icon-white
     .span1
       %p.label.label-inverse
         Lunes
       %p.label.label-info
         9:00 pm
 
-    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    = image_tag 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc6/132758_10150357486355032_1715242_o.jpg', class: 'thumbnail span1'
     .span2
       %blockquote.pull-right
         La democracia es el aparato que mueve al mundo, y la democracia es mi pasion.
         %small
-          Jose Luis Barrera
+          José Luis Barrera
 
 .row
   .span12
@@ -80,18 +63,16 @@
     = image_tag 'el_ojo.png', class: 'span1 thumbnail'
     .span2
       %h3 Ojo del deporte
-      .btn.btn-primary
-        %i.icon-play.icon-white
     .span1
       %p.label.label-inverse
         Lunes
       %p.label.label-info
         10:00 pm
 
-    = image_tag 'laberinto.png', class: 'thumbnail span1'
+    = image_tag 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/411698_10151760123420319_17368316_o.jpg', class: 'thumbnail span1'
     .span2
       %blockquote.pull-right
-        El manchester es mi religion
+        El manchester es mi religión.
         %small
           Ernesto Horta
 
@@ -101,3 +82,83 @@
         La nfl es el deporte que juega Dios.
         %small
           Acerero Arias
+
+.row
+  .span12
+    %h3{style: 'font-style: italic;'} Negocios
+
+.program
+  .row
+    = image_tag 'el_corporativo.png', class: 'span1 thumbnail'
+    .span2
+      %h3 El corporativo
+    .span1
+      %p.label.label-inverse
+        Martes
+      %p.label.label-info
+        8:30 pm
+
+    = image_tag 'https://si0.twimg.com/profile_images/2257890073/newtwt.png', class: 'thumbnail span1'
+    .span2
+      %blockquote.pull-right
+        Los negocios mi pasión, la vida una aventura.
+        %small
+          Armando Torres
+
+    = image_tag 'https://si0.twimg.com/profile_images/1899039155/Skydive2.jpg', class: 'thumbnail span1'
+    .span2
+      %blockquote.pull-right
+        Empresarios: Adelante! que nos espera un mundo lleno de éxito.
+        %small
+          José Luis Del Moral
+
+.row
+  .span12
+    %h3{style: 'font-style: italic;'} Pensamiento crítico
+
+.program
+  .row
+    = image_tag 'masa_critica.png', class: 'span1 thumbnail'
+    .span2
+      %h3 Masa Crítica
+    .span1
+      %p.label.label-inverse
+        Miércoles
+      %p.label.label-info
+        9:00 pm
+
+    = image_tag 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc7/400293_278368762216925_1706544034_n.jpg', class: 'thumbnail span1'
+    .span2
+      %blockquote.pull-right
+        Solo se que el mundo debe pensar dos veces antes de entregar su mente a cualquier cosa.
+        %small
+          Gerardo Quijada
+
+.row
+  .span12
+    %h3{style: 'font-style: italic;'} Entretenimiento
+
+.program
+  .row
+    = image_tag 'la_macana.png', class: 'span1 thumbnail'
+    .span2
+      %h3 La Macana
+    .span1
+      %p.label.label-inverse
+        Jueves
+      %p.label.label-info
+        9:00 pm
+
+    = image_tag 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/288554_10150316866913096_1751366409_o.jpg', class: 'thumbnail span1'
+    .span2
+      %blockquote.pull-right
+        Te reto a que te hago reír, si no, la estación te paga la cena.
+        %small
+          Luis Palicio (el wiwis)
+
+    = image_tag 'https://sphotos.xx.fbcdn.net/hphotos-prn1/26740_107174625970900_1398317_n.jpg', class: 'thumbnail span1'
+    .span2
+      %blockquote.pull-right
+        Mi carnal (el wiwis) y yo queremos que pases un buen rato con la macana. Si, nuestro programa.
+        %small
+          Jorge Contreras (el coquis)
