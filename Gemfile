@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'yettings'
 gem 'bluecloth'
+gem 'httparty'
 
 
 # Gems used only for assets and not required

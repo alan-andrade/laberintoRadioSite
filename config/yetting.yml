@@ -1,7 +1,13 @@
-development:
+development: &development
+  google_maps: 'http://maps.googleapis.com/maps/api/js?key=AIzaSyDTJ_7I7E1MLEfqfs6YWvaZJwlcyFHconI&sensor=false'
   chat_server: 'http://localhost:8080'
-  shoutcast: 'http://laberintoradio.net:8000/;stream/1'
+  shoutcast: &shoutcast
+    base:   'http://laberintoradio.net:8000'
+    stream: '/laberinto'
+    auth:
+      username: 'admin'
+      password: 'laberintoadmin'
 
 production:
+  <<: *development
   chat_server: 'http://184.169.162.15:8080'
-  shoutcast: 'http://laberintoradio.net:8000/;stream/1'

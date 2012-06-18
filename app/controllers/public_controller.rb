@@ -4,4 +4,8 @@ class PublicController < ApplicationController
   def programacion; end
   def program; end
   def pending;end
+  def locutor; end
+  def listeners
+    render json: Shoutcast::Admin.get_listeners
+  end
 end
