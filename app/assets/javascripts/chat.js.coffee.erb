@@ -1,21 +1,57 @@
-# iScroll
-document.addEventListener 'touchmove', (e) ->
-  e.preventDefault()
-, false
-
-loaded = ->
-  myScroll = new iScroll('messages-container')
-  return
-
-document.addEventListener 'DOMContentLoaded', ->
-  setTimeout loaded, 200
-, false
-
-# chat UI
 $ ->
-  window.chat = new Laberinto.Chat {
-    form:         $('form')
-    inputbox:     $('input#message_box')
-    container:    $('table tbody')
-    socket_addr:  '<%= Yetting.chat_server %>'
-  }
+
+  socket = new io.connect "<%= Yetting.chat_server %>"
+
+  chat = new lr.Chat
+    input: '.lr.chat .input'
+    board: '.lr.chat .board'
+    list: '.lr.chat .list'
+    socket: socket
+
+  setTimeout(
+    ->
+      $('.welcome').slideUp(
+        ->
+          $(@).remove())
+    , 3000
+  )
+
+
+  uid = $.cookie 'uid'
+  user = null
+
+  socket.on 'user.uid', ->
+    socket.emit 'user.uid=', uid
+    return
+
+  socket.on 'user.name', ->
+    $('#nickname').modal
+      backdrop: 'static'
+    return
+
+  $('#nickname .ok').click ->
+    name = $('#nickname #user_nickname').val()
+    if name
+      socket.emit 'user.name=', name
+    return
+
+  $('#nickname #user_nickname').keyup (e) ->
+    if e.keyCode is 13
+      name = $('#nickname #user_nickname').val()
+      if name
+        socket.emit 'user.name=', name
+        $('#nickname .ok').click()
+      return
+
+  socket.on 'user.create', (user) ->
+    user = new lr.User(user.uid, user.name)
+    chat.user = user
+    return
+
+  socket.on 'users.refresh', (users) ->
+    chat.updateList(users)
+    return
+
+  socket.on 'user.speak', (msg) ->
+    msg = new lr.ChatMessage(msg.nick, msg.body)
+    chat.renderMessage(msg)

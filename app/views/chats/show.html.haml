@@ -1,37 +1,41 @@
-.container
+.row-fluid
   .row
     .span12
+      .jplayer
+      .jaudio
+        %a.btn.play{href:'#'}
+          %i.icon-play
+        %a.btn.pause{href:'#'}
+          %i.icon-pause.pause
+        .no-solution
+          %p Actualiza tu navegador para escucharnos
+  .lr.chat
     .row
-      .span12
-        .jplayer
-        .jaudio
-          %a.btn.play{href:'#'}
-            %i.icon-play
-          %a.btn.pause{href:'#'}
-            %i.icon-pause.pause
-          .no-solution
-            %p Actualiza tu navegador para escucharnos
-    .row
-      .span8.chat
-        #messages-container
-          %table.table.table-condensed.table-striped
-            %thead
-              %tr
-                %th.span2
-                %th.span6
-            %tbody
-
-        = form_tag '/', class: 'form-inline'  do
-          = text_field_tag :message_box, nil, class: 'span8', placeholder: 'Escribe aqui tu mensaje'
-          .hidden-desktop
-            = button_tag 'Enviar', class: :btn
-      .span4.notice
-        = image_tag 'laberinto.jpg'
+      .span8
+        %h3 Chat
+        .board
+          .welcome
+            %h2
+              ¡ Bienvenido !
+              %br
+              Comienza a construir un mejor país
+        %input{type: 'text', class: 'span8 input', placeholder: 'Escribe aqui tu mensaje'}
+      .span4
         .well
-          %p Estamos trabajando en un nuevo sitio.
-          %p Por lo pronto esperemos que te guste el chat.
+          %h3 Partipantes
+          .list
+
+  .modal.hide#nickname
+    .modal-header
+      %h3 Bienvenido
+    .modal-body
+      %p ¿ Cuál es tu nombre o apodo ?
+      = text_field_tag 'user_nickname', nil, :placeholder => 'Nombre o apodo',  'tabindex' => 1
+    .modal-footer
+      %a.btn.btn-primary.ok{data: {dismiss: 'modal'}, 'tabindex' => 2}
+        Ese soy yo!
+
 - content_for :js do
-  = javascript_include_tag 'jquery.jplayer/jquery.jplayer.js', 'laberinto.player'
+  = javascript_include_tag 'jquery.jplayer/jquery.jplayer.js', 'laberinto.player', 'bootstrap-modal'
   = javascript_include_tag "#{Yetting.chat_server}/socket.io/socket.io.js"
-  = javascript_include_tag 'iscroll', 'underscore', 'laberinto.chat'
-  = javascript_include_tag 'chat'
+  = javascript_include_tag 'laberinto.chat', 'chat'

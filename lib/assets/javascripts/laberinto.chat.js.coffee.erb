@@ -1,83 +1,60 @@
-window.Laberinto ||= {}
+lr = window.lr ||= {}
 
-Laberinto.version = '1.0'
+class User
+  constructor: (uid,name) ->
+    $.cookie 'uid', uid,
+      expires: 365
+      path: '/'
+    @name = name
+    @uid  = uid
 
-Chat = Laberinto.Chat = (options) ->
-  this.inputbox   = options.inputbox
-  this.container  = options.container
-  this.form       = options.form
-  this.socket     = io.connect options.socket_addr
-  this.msg        = new Message()
-  this.listen() if this.socket
 
-  this.form.on 'submit', =>
-    text = this.inputbox.val()
-    return false if text is ''
-    this.msg.set { body: text, sender: 'Yo dije' , className: 'message'}
-    this.print()
-    this.socket.emit 'client_message', { body: this.inputbox.val() }
-    this.inputbox.val ''
-    false
+class Chat
+  constructor: (options) ->
+    @input = $(options.input)
+    @board = $(options.board)
+    @list = $(options.list)
+    @socket = options.socket
+    @init()
 
-  return
+  init: ->
+    @input.bind 'keydown', @catchEnter
 
-_.extend(Chat.prototype, {
-  print: ->
-    this.container.prepend this.msg.build()
-
-  listen: ->
-    chat    = this
-    socket  = this.socket
-
-    socket.on 'new_connection', (data) ->
-      chat.msg.set _.extend(data, { className:'notice'})
-      chat.print()
-      return
-
-    socket.on 'receive_message', (data) ->
-      chat.msg.set _.extend(data, { className:'message' })
-      chat.print()
-      return
-
-    socket.on 'user_leave', (data) ->
-      chat.msg.set _.extend(data, { className:'notice' })
-      chat.print()
-      return
+  catchEnter: (e) =>
+    body = @input.val()
+    if e.keyCode is 13 and body isnt ''
+      nick = @user.name
+      message = new ChatMessage(nick, body)
+      @renderMessage message
+      @socket.emit 'user.speak',
+        nick: message.sender
+        body:message.body
     return
-})
 
-Message = (content={}) ->
-  this.attributes = {}
-  this.tag        = 'tr'
-  this.attributes['body']   = content.body
-  this.attributes['sender'] = content.sender
-  this.attributes['className']  = content.className || 'message'
-  return
+  renderMessage: (msg) ->
+    @board.append(msg.$el)
+    @board.scrollTop(@board.scrollTop() + msg.$el.height() * 2)
+    @input.val('')
 
-_.extend(Message.prototype, {
-  set: (attributes) ->
-    _.extend this.attributes, attributes
+  updateList: (users) ->
+    @list.empty()
+    for id,user of users when user.online is true
+      el = $('<p class="user">')
+      el.text(user.name)
+      el.prepend($('<i class="icon-user">  </i>'))
+      @list.append(el)
+    return
 
-  get: (attribute) ->
-    this.attributes[attribute]
-
-  el: ->
-    $(document.createElement this.tag).addClass(this.get('className'))
+class ChatMessage
+  constructor: (@sender, @body) ->
+    @build()
 
   build: ->
-    className = this.get 'className'
-    this.el().addClass(className)
-    if className == 'message'
-      return this.build_message()
-    else
-      return this.build_notice()
+    nick = $('<span class="nick" />').text("#{@sender}: ")
+    body = $('<span class="body" />').text(@body)
+    @$el = $('<p class="msg">').append(nick, body)
+    return
 
-  build_message: ->
-    sender = $('<td>').addClass('nickname').text(this.get 'sender')
-    body   = $('<td>').addClass('body').text(this.get 'body')
-    this.el().append(sender, body)
-
-  build_notice: ->
-    body  = $('<td>').attr('colspan','2').addClass(this.class).text(this.get 'body')
-    this.el().append(body)
-})
+lr.User = User
+lr.Chat = Chat
+lr.ChatMessage = ChatMessage
