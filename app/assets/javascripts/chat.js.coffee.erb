@@ -39,7 +39,6 @@ $ ->
     if e.keyCode is 13
       name = $('#nickname #user_nickname').val()
       if name
-        socket.emit 'user.name=', name
         $('#nickname .ok').click()
       return
 

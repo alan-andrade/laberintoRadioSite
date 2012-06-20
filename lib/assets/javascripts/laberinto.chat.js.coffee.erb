@@ -29,11 +29,14 @@ class Chat
       @socket.emit 'user.speak',
         nick: message.sender
         body:message.body
+      @clearInput()
     return
 
   renderMessage: (msg) ->
     @board.append(msg.$el)
     @board.scrollTop(@board.scrollTop() + msg.$el.height() * 2)
+
+  clearInput: ->
     @input.val('')
 
   updateList: (users) ->
