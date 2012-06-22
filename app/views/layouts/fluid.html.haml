@@ -4,11 +4,23 @@
   %head
     %meta{charset: 'utf8'}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
-    %title Laberinto Radio : double split
+    %title Laberinto Radio, cambiando a Mexico
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = yield :js
     = csrf_meta_tags
+    :javascript
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4fe40516613f5d37ec000036');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
 
   %body
     %nav.navbar.navbar-fixed-top
