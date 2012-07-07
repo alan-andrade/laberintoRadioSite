@@ -1,9 +1,10 @@
 Laberintoradio::Application.routes.draw do
-  get :pending, to: 'public#pending'
-  get :programacion, to: 'public#programacion'
-  get :index,     to: 'public#index'
-  get :locutor,   to: 'public#locutor'
-  get :listeners, to: 'public#listeners'
-  get 'chat',     to: 'chats#show'
-  root to: 'public#index'
+  get :pending, to: 'pages#pending'
+  get :programacion, to: 'pages#programacion'
+  get :index,     to: 'pages#index'
+  get :locutor,   to: 'pages#locutor'
+  get :listeners, to: 'pages#listeners'
+  get :quienes,   to: 'pages#quienes'
+  get :chat,      to: 'chats#show'
+  root to: 'pages#index'
 end

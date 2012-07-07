@@ -1,0 +1,49 @@
+.hero-unit
+  = image_tag 'laberinto.png', style: 'float: right; height: 200px; margin-top: -35px;'
+  %h1 Laberinto Radio
+  %p Una radio única que fomenta el crecimiento económico y social de nuestro hermoso México.
+  %a.btn.btn-large.btn-primary{href: chat_path}
+    Escúchanos
+  %a.btn.btn-large.btn-success{href: programacion_path}
+    Programación
+%ul.thumbnails
+  %li.span3
+    .thumbnail
+      =image_tag 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash3/546663_428813833802346_1689378255_n.jpg'
+  %li.span3
+    .thumbnail
+      =image_tag 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc7/329849_187605538012707_1267830896_o.jpg'
+  %li.span3
+    .thumbnail
+      =image_tag 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc7/466362_248683238552563_1963181005_o.jpg'
+  %li.span3
+    .thumbnail
+      =image_tag 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc7/330093_10150647102176329_1476265901_o.jpg'
+
+.container
+  .row-fluid
+    .span5
+      :markdown
+        # Nuestra regla de oro
+        Nosotros al igual que tú, amamos México, y a diferencia de muchos otros, creemos en el cambio verdadero y honesto de nuestra sociedad.
+
+        Ninguno de nosotros se conforma con vivir aquí nadamás, cada integrante de este proyecto tiene la firme convicción de que el cambio esta en nuestras manos.
+
+        Te invitamos a que nos conozcas y nos apoyes para crecer y ser mejores.
+
+    .span5
+      %h1 Como lo haremos
+      %dl
+        %dt Alentando
+        %dd Empresario, músico, deportista, estudiante, líder de opinión: Nosotros creemos en tí. Esta es tu casa para expresar tus ideas que cambiaran a México.
+        %dt Poniendo en contacto
+        %dd Gracias al Internet el mundo es mas pequeño, sin embargo, hay una brecha entre el interesado y su objetivo. En Laberinto Radio trabajamos para ser un punto de encuentro digital entre personas afines en distintas áreas. Principalmente económico y social.
+        %dt Entreteniendo
+        %dd Creemos que no hay mejor medicina que el buen humor y siempre buscamos mezclar la picardía con una gran responsabilidad al informar.
+        %dt Recuperando nuestro orgullo
+        %dd México ha estado en busca de una identidad por lo menos hace 100 años. Laberinto Radio sabe que no está muy lejos, solo hay que luchar por ella y representarla con mucho orgullo.
+    .span2
+      = link_to image_tag('http://icons.iconarchive.com/icons/iconshock/high-detail-social/128/twitter-icon.png'), 'http://www.twitter.com/laberinto_radio'
+      %h2 @laberinto_radio
+      = link_to image_tag('http://icons.iconarchive.com/icons/iconshock/high-detail-social/128/facebook-icon.png'), 'http://www.facebook.com/laberintoradiomexico'
+      %h2 LaberintoRadioMexico

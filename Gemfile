@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'sqlite3'
 gem 'haml-rails'
-gem 'yettings'
+gem 'yettings', require: false
 gem 'bluecloth'
 gem 'httparty'
 
@@ -17,11 +17,13 @@ gem 'httparty'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier',     '>= 1.0.3'
 end
 
-group :test, :development do
-  gem "rspec-rails", "~> 2.0"
+group :test do
+  gem 'cucumber-rails', require: false
+  gem 'rspec-rails', '~> 2.0'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'

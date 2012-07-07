@@ -93,7 +93,6 @@ class LR.Map
     mapTypeId: google.maps.MapTypeId.ROADMAP
     center: new google.maps.LatLng(23, -102)
     zoom: 4
-
   @draw: ->
     @map = new google.maps.Map( @element() , @options )
     return
@@ -108,7 +107,7 @@ class LR.Map
     lng = parseFloat(ipAsCoords.longitude)
     position  = new google.maps.LatLng lat, lng
     marker    = new google.maps.Marker
-      animation : google.maps.Animation.BOUNCE
+      animation : google.maps.Animation.DROP
       position  : position
       map       : @map
     @markers.push marker
