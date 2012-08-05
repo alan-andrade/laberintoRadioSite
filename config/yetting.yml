@@ -11,3 +11,6 @@ development: &development
 production:
   <<: *development
   chat_server: 'http://184.169.162.15:8080'
+
+test:
+  <<: *development

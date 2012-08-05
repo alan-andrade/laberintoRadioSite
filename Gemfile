@@ -5,8 +5,8 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'bluecloth'
 gem 'httparty'
+gem 'jquery-rails'
 gem 'authlogic'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,13 +20,17 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.0'
 end
 
+group :development, :test, :production do
+  gem 'yettings'
+end
+
 group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
 end
 
-gem 'yettings'
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

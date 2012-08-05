@@ -13,6 +13,7 @@ Laberintoradio::Application.routes.draw do
 
   match '/login'  => 'user_sessions#new',     via: :get, as: 'login'
   match '/logout' => 'user_sessions#destroy', via: :get, as: 'logout'
+  match 'mi_cuenta' => 'users#show', via: :get, as: 'myaccount'
 
   root to: 'pages#index'
 end
