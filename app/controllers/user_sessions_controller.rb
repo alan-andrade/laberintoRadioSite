@@ -8,11 +8,9 @@ class UserSessionsController < ApplicationController
 
   def create
     @user_session = UserSession.new(params[:user_session])
-    if @user_session.save
-      redirect_to @user_session.user
-    else
-      render :new
-    end
+    @user_session.save ?
+      redirect_to(@user_session.user) :
+      render(:new)
   end
 
   def destroy

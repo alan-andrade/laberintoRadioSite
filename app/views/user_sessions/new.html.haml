@@ -1,5 +1,7 @@
 %h1 Login
-
+- unless @user_session.errors.empty?
+  .alert.alert-error
+    = @user_session.errors.full_messages.to_sentence
 = form_for @user_session, url: user_session_path, html: {class: :form} do |f|
   = f.label :email
   = f.text_field :email
