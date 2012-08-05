@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     @user_session.save ?
-      redirect_to(@user_session.user) :
+      redirect_to('/mi_cuenta') :
       render(:new)
   end
 

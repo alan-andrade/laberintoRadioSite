@@ -1,12 +1,19 @@
-When /^I go to (\/\w*)$/ do |url|
+Given /^An existent user$/ do
+  @user = FactoryGirl.create(:user)
+  @user.should be_valid
+end
+
+When /^I go to "(\/\w*)"$/ do |url|
   visit(url)
   current_path.should == url
 end
 
-When /^I fill the (.*) with (.*)$/ do |field, value|
-  fill_in field, with: value
+When /^I enter my credentials correctly$/ do
+  fill_in 'Email',     with: @user.email
+  fill_in 'Password',  with: @user.password
+  click_on 'Entrar'
 end
 
-When /^I click (\w*)$/ do |link_name|
-  click_on link_name
+When /^I get redirected to "(\/\w*)"$/ do |url|
+  current_path.should == url
 end

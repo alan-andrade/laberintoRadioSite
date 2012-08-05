@@ -20,14 +20,12 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.0'
 end
 
-group :development, :test, :production do
-  gem 'yettings'
-end
-
 group :test do
+  gem 'debugger'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'factory_girl_rails'
   gem 'launchy'
 end
 
