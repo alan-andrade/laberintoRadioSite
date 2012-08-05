@@ -8,9 +8,11 @@ class UserSessionsController < ApplicationController
 
   def create
     @user_session = UserSession.new(params[:user_session])
-    @user_session.save ?
-      redirect_to(current_user) :
-      redirect_to(root_path)
+    if @user_session.save
+      redirect_to @user_session.user
+    else
+      render :new
+    end
   end
 
   def destroy
