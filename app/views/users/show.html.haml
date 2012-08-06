@@ -1,3 +1,5 @@
 %h1 User
 
 %p= @user.email
+
+= render partial: 'profile', object: @user.profile
