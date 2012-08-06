@@ -10,6 +10,7 @@ Laberintoradio::Application.routes.draw do
 
   resource :user_session
   resources :users
+  resource :program
 
   match '/login'  => 'user_sessions#new',     via: :get, as: 'login'
   match '/logout' => 'user_sessions#destroy', via: :get, as: 'logout'

@@ -1,0 +1,7 @@
+%h1 Crea tu programa
+
+= form_for @program, url: program_path do |f|
+  = f.label :name, 'Nombre'
+  = f.text_field :name
+  = f.label :description, 'Descripcion'
+  = f.text_area :description

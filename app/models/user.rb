@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
   end
 
   has_one :profile
+  has_one :program
 
 end

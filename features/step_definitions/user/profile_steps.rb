@@ -4,10 +4,10 @@ end
 
 Given /^Im logged in$/ do
   @user = FactoryGirl.create(:user)
-  UserSession.create(@user)
 end
 
-Given /^I go to '(\/mi_cuenta)'$/ do |url|
+Given /^I go to '(\/\w*)'$/ do |url|
+  UserSession.create(@user)
   visit url
   current_path.should == url
 end

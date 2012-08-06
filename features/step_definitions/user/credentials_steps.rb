@@ -1,5 +1,5 @@
 Given /^An existent user$/ do
-  @user = FactoryGirl.create(:user)
+  @user = FactoryGirl.create(User, email: 'test@mail.com', password: 'myssecret')
   @user.should be_valid
 end
 
