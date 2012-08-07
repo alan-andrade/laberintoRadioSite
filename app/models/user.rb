@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :profile_attributes
+  attr_accessible :email, :password, :profile_attributes, :admin
 
   acts_as_authentic do |c|
     c.require_password_confirmation = false
