@@ -1,0 +1,14 @@
+%h2 User Controller
+
+%table.table
+  %thead
+    %tr
+      %th Email
+      %th Nombre
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.profile.name
+
+= link_to 'Nuevo Usuario', new_admin_user_path, class: 'btn btn-primary'

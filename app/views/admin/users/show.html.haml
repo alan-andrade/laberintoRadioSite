@@ -1,0 +1,7 @@
+%h1 User
+
+%p= @user.email
+
+= render partial: 'users/profile', object: @user.profile
+
+= link_to 'Panel de usuarios', admin_users_path

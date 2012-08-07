@@ -1,0 +1,8 @@
+%h1 New user
+
+= form_for [:admin, @user] do |f|
+  = f.fields_for :profile do |f|
+    = render partial: 'profiles/form', object: f
+  = render partial: 'users/form', object: f
+
+= link_to 'Panel de usuarios', admin_users_path

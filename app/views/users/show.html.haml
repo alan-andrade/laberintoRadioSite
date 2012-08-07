@@ -3,3 +3,5 @@
 %p= @user.email
 
 = render partial: 'profile', object: @user.profile
+
+= link_to 'Editar', edit_user_path(@user)
