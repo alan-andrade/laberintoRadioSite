@@ -20,6 +20,22 @@ class ProgramsController < ApplicationController
     end
   end
 
+  def edit
+    @program = @current_user.program
+  end
+
+  def update
+    @program = @current_user.program
+    @program.update_attributes(params[:program])
+    respond_with @program do |format|
+      format.html do
+        @program.save ?
+          redirect_to(program_path) :
+          render(:edit)
+      end
+    end
+  end
+
   def show
     @program = @current_user.program
   end
