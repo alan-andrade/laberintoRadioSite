@@ -7,6 +7,7 @@ gem 'bluecloth'
 gem 'httparty'
 gem 'jquery-rails'
 gem 'authlogic'
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
