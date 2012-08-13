@@ -1,4 +1,10 @@
-= form.label :name, 'Nombre'
-= form.text_field :name
-= form.label :description, 'Descripcion'
-= form.text_area :description
+= form_for [ user, program] do |form|
+  = form.label :name, 'Nombre'
+  = form.text_field :name
+  = form.label :description, 'Descripcion'
+  = form.text_area :description
+
+  = render partial: 'presenters', locals: { users: users ||= User.all, form: form }
+
+  %br
+  = form.submit 'Guardar', class: :btn

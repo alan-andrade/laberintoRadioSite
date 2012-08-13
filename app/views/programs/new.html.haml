@@ -4,9 +4,4 @@
   .alert.alert-error
     = @program.errors.full_messages.to_sentence
 
-= form_for [ @current_user , @program ] do |f|
-  = render partial: 'form', object: f
-  = render partial: 'presenters', locals: { users: @users ||= User.all, form: f }
-
-  %br
-  = f.submit 'Guardar', class: :btn
+= render partial: 'form', locals: { user: @current_user, program: @program }

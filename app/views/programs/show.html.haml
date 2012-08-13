@@ -1,4 +1,4 @@
 %h2= @program.name
 %p= @program.description
 
-= link_to 'Editalo', edit_program_path
+= link_to 'Editalo', edit_user_program_path(@current_user, @program)

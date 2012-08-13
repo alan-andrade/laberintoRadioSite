@@ -4,5 +4,9 @@
 
 = render partial: 'profile', object: @user.profile
 
+%h2 Programas
+= render @programs
+
 = link_to 'Editar', edit_user_path(@user)
+|
 = link_to 'Nuevo Programa', new_user_program_path(@user)
