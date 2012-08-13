@@ -4,5 +4,7 @@
   = f.fields_for :profile do |f|
     = render partial: 'profiles/form', object: f
   = render partial: 'users/form', object: f
+  %br
+  = f.submit 'Guardar'
 
 = link_to 'Panel de usuarios', admin_users_path

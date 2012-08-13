@@ -1,3 +1,8 @@
 %h1 Edit
 
-= render partial: 'form', locals: { program: @program }
+= form_for [@current_user, @program] do |f|
+  = render partial: 'form', object: f
+  = render partial: 'presenters', locals: { users: @users ||= User.all, form: f }
+
+  %br
+  = f.submit 'Guardar', class: :btn

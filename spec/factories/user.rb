@@ -7,5 +7,9 @@ FactoryGirl.define do
     persistence_token    Authlogic::Random.hex_token
     single_access_token  Authlogic::Random.friendly_token
     perishable_token     Authlogic::Random.friendly_token
+
+    trait :with_profile do
+      profile
+    end
   end
 end

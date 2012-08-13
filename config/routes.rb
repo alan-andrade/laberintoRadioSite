@@ -9,8 +9,12 @@ Laberintoradio::Application.routes.draw do
   ].each{|page|  get page, to: "pages##{page}" }
 
   resource :user_session
-  resources :users
-  resource :program
+
+  resources :programs, only: [ :show ]
+
+  resources :users do
+    resources :programs
+  end
 
   namespace :admin do
     resources :users
@@ -18,7 +22,7 @@ Laberintoradio::Application.routes.draw do
 
   match '/login'  => 'user_sessions#new',     via: :get, as: 'login'
   match '/logout' => 'user_sessions#destroy', via: :get, as: 'logout'
-  match '/mi_cuenta' => 'users#show',          via: :get, as: 'myaccount'
+  match '/mi_cuenta' => 'users#show',         via: :get, as: 'myaccount'
 
   root to: 'pages#index'
 end

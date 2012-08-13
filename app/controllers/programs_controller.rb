@@ -1,31 +1,33 @@
 class ProgramsController < ApplicationController
-  before_filter :require_user
-  before_filter :one_per_user, only: :new
-
   respond_to :html
 
+  before_filter :require_user
+
+
   def new
-    @program = @current_user.build_program
+    @users   = User.all
+    @program = Program.new
   end
 
   def create
-    @program = @current_user.build_program(params[:program])
+    @program = Program.new(params[:program])
 
     respond_with @program do |format|
       format.html do
         @program.save ?
-          redirect_to(program_path) :
+          redirect_to(program_path(@program)) :
           render(:new)
       end
     end
   end
 
   def edit
-    @program = @current_user.program
+    @users   = User.all
+    @program = @current_user.programs.find(params[:id])
   end
 
   def update
-    @program = @current_user.program
+    @program = @current_user.programs.find(params[:id])
     @program.update_attributes(params[:program])
     respond_with @program do |format|
       format.html do
@@ -37,15 +39,7 @@ class ProgramsController < ApplicationController
   end
 
   def show
-    @program = @current_user.program
-  end
-
-  private
-
-  def one_per_user
-    if (program = @current_user.program)
-      redirect_to program_path
-    end
+    @program = Program.find(params[:id])
   end
 
 end

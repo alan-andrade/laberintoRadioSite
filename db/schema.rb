@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807044828) do
+ActiveRecord::Schema.define(:version => 20120813023154) do
 
   create_table "profiles", :force => true do |t|
     t.integer "user_id"
@@ -22,12 +22,17 @@ ActiveRecord::Schema.define(:version => 20120807044828) do
   add_index "profiles", ["user_id"], :name => "users_profile_index"
 
   create_table "programs", :force => true do |t|
-    t.integer "user_id",                                        :null => false
-    t.string  "name",        :default => "Programa sin nombre"
-    t.text    "description"
+    t.string "name",        :null => false
+    t.text   "description"
   end
 
-  add_index "programs", ["user_id"], :name => "index_programs_on_user_id"
+  create_table "schedules", :force => true do |t|
+    t.integer "user_id",    :null => false
+    t.integer "program_id", :null => false
+  end
+
+  add_index "schedules", ["program_id"], :name => "index_schedules_on_program_id"
+  add_index "schedules", ["user_id"], :name => "index_schedules_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string  "email",                                  :null => false

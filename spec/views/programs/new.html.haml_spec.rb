@@ -3,10 +3,11 @@ require 'spec_helper'
 describe 'programs/new.html.haml' do
   subject { rendered }
   context 'As a logged in user' do
-    let(:current_user){ FactoryGirl.build(:user) }
+    let(:current_user){ FactoryGirl.build(:user, :with_profile) }
 
     before do
-      assign(:program, current_user.build_program)
+      assign(:program,  current_user.programs.build)
+      assign(:users,    [current_user] )
       render
     end
 

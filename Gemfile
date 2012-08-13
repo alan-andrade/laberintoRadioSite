@@ -19,6 +19,10 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'guard'
+  gem 'spork', '~> 0.9.0'
   gem 'rspec-rails', '~> 2.0'
 end
 
@@ -29,6 +33,7 @@ group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'launchy'
+  gem 'shoulda-matchers'
 end
 
 
