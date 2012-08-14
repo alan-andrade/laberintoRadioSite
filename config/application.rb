@@ -18,6 +18,16 @@ module Laberintoradio
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
 
+    config.paperclip_defaults = {
+      storage: 's3',
+      s3_credentials: YAML.load_file("#{Rails.root}/config/aws.yml"),
+      path: ":class/:attachment/#{Rails.env}/:id/:style/:basename.:extension",
+      default_url: "http://laberintoradio.net/images/laberinto.jpg",
+      url: ':s3_domain_url',
+      s3_permissions: 'authenticated-read',
+      s3_storage_class: 'reduced_redundancy'
+    }
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
