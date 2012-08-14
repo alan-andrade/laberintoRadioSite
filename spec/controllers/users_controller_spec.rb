@@ -2,14 +2,11 @@ require 'spec_helper'
 
 describe UsersController do
   describe ' GET#mi_cuenta (show)' do
-    let(:stubbed_user) { stub_model(User) }
-    context 'with a logged id user' do
-      subject { get :show }
+    let(:user) { FactoryGirl.build(:user) }
 
-      before do
-        controller.stub(require_user: stubbed_user)
-        subject
-      end
+    context 'with a logged in user' do
+      subject { get :show }
+      before  { @current_user = user }
 
       it{ response.should be_successful }
     end

@@ -8,18 +8,9 @@ describe ProgramsController do
 
     describe 'GET#new' do
       it 'returns @users and build @program' do
-        get :new
+        get :new, user_id: current_user.id
         assigns(:program).should_not be_nil
         assigns(:users).should_not be_nil
-      end
-    end
-  end
-
-  context 'without a logged user' do
-    describe 'GET#new' do
-      it 'should force login' do
-        get :new
-        should redirect_to login_path
       end
     end
   end

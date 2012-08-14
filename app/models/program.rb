@@ -8,6 +8,9 @@ class Program < ActiveRecord::Base
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }
 
+  validates_with AttachmentSizeValidator,         attributes: :logo, less_than: 2.megabytes
+  validates_with AttachmentContentTypeValidator,  attributes: :logo, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+
   validate :need_one_broadcaster
 
   private

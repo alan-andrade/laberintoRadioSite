@@ -21,11 +21,9 @@ module Laberintoradio
     config.paperclip_defaults = {
       storage: 's3',
       s3_credentials: YAML.load_file("#{Rails.root}/config/aws.yml"),
+      url:  ':s3_domain_url',
       path: ":class/:attachment/#{Rails.env}/:id/:style/:basename.:extension",
-      default_url: "http://laberintoradio.net/images/laberinto.jpg",
-      url: ':s3_domain_url',
-      s3_permissions: 'authenticated-read',
-      s3_storage_class: 'reduced_redundancy'
+      default_url:      'http://laberintoradio.net/images/laberinto.jpg'
     }
 
     # Only load the plugins named here, in the order given (default is alphabetical).

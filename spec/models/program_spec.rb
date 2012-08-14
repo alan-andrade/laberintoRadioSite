@@ -4,6 +4,12 @@ describe Program do
   context 'Associations' do
     it { should have_many :users }
     it { should have_many :schedules }
+    it { should have_attached_file :logo }
+    it { should validate_attachment_content_type(:logo).
+                allowing('image/png', 'image/jpg').
+                rejecting('text/plain', 'text/xml') }
+    it { should validate_attachment_size(:logo).
+                less_than(2.megabytes) }
   end
 
   context 'Validations' do
