@@ -1,5 +1,6 @@
 = form_for [ user, program ], html: { multipart: true }  do |form|
-  = form.file_field :logo
+  = form.fields_for :logo do |t|
+    = t.file_field :image
   = form.label :name, 'Nombre'
   = form.text_field :name
   = form.label :description, 'Descripcion'

@@ -1,12 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :profile_attributes, :admin
+  attr_accessible :email,
+                  :password,
+                  :profile_attributes,
+                  :admin # mmm, this should not be mass assignable
 
-  scope :minus, ->(u){ where(["users.id != ?", u.id])}
-  scope :without_program, where("users.program_id IS NULL")
-
-  acts_as_authentic do |c|
-    c.require_password_confirmation = false
-  end
+  acts_as_authentic { |c| c.require_password_confirmation = false }
 
   has_one :profile
 

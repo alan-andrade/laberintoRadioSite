@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814020517) do
+ActiveRecord::Schema.define(:version => 20120815033615) do
+
+  create_table "assets", :force => true do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "profiles", :force => true do |t|
     t.integer "user_id"
@@ -22,12 +31,8 @@ ActiveRecord::Schema.define(:version => 20120814020517) do
   add_index "profiles", ["user_id"], :name => "users_profile_index"
 
   create_table "programs", :force => true do |t|
-    t.string   "name",              :null => false
-    t.text     "description"
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.string "name",        :null => false
+    t.text   "description"
   end
 
   create_table "schedules", :force => true do |t|

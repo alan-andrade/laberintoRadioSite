@@ -7,6 +7,7 @@ class ProgramsController < ApplicationController
   def new
     @users   = User.all
     @program = Program.new
+    @program.build_logo
   end
 
   def create
