@@ -18,3 +18,4 @@ config/aws.yml
 /tmp
 public/assets/*
 .DS_Store
+.sass-cache

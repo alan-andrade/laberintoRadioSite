@@ -3,3 +3,8 @@
 
 = form.label :password
 = form.password_field :password
+
+%br
+= form.fields_for :bio, form.object.bio || form.object.build_bio do |bio|
+  = bio.label :body
+  = bio.text_area :body

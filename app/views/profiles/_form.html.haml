@@ -1,3 +1,6 @@
+= form.fields_for :avatar, form.object.avatar || form.object.build_avatar do |t|
+  = t.file_field :image
+
 = form.label :name
 = form.text_field :name
 

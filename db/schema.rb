@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815033615) do
+ActiveRecord::Schema.define(:version => 20120820004659) do
 
   create_table "assets", :force => true do |t|
     t.integer  "imageable_id"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20120815033615) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "explanations", :force => true do |t|
+    t.integer "explainable_id"
+    t.string  "explainable_type"
+    t.text    "body"
+  end
+
+  add_index "explanations", ["explainable_id"], :name => "index_explanations_on_explainable_id"
 
   create_table "profiles", :force => true do |t|
     t.integer "user_id"

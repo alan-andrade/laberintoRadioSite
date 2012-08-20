@@ -1,11 +1,24 @@
-%h1 User
+.presenter
+  .header
+    .picture
+      = image_tag @user.profile.avatar.url(:medium), width: 170
+    .credentials
+      %h1.name= @user.name
+      .title Ingeniero en audio
+      .social-networks
+        = link_to 'twitter.com' do
+          = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/twitter-icon.png')
+        = link_to 'facebook.coom' do
+          = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/facebook-icon.png')
+        = link_to 'linkedin.coom' do
+          = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/linkedin-icon.png')
 
-%p= @user.email
-
-= render partial: 'profile', object: @user.profile
-
-%h2 Programas
-= render @programs
+  .body
+    .programs
+      = render @programs
+    .bio
+      :markdown
+        #{@user.bio.body}
 
 = link_to 'Editar', edit_user_path(@user)
 |

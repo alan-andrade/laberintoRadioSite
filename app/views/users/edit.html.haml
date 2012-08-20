@@ -1,8 +1,8 @@
 %h2 Editar mi perfil
 
-= form_for @user do |f|
-  = f.fields_for :profile do |g|
-    = render partial: 'profiles/form', object: g
+= form_for @user, html: { multipart: true } do |f|
+  = f.fields_for :profile do |profile|
+    = render partial: 'profiles/form', object: profile
   = render partial: 'form', object: f
 
   %br

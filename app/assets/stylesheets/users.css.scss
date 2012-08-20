@@ -1,3 +1,55 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.presenter {
+
+  .header {
+
+    .picture {
+      img {
+        margin: 0 20px 20px 0;
+        width: 140px;
+        height: 140px;
+        float: left;
+      }
+    }
+
+    .credentials {
+
+      float: left;
+      width: 620px;
+
+      .name {
+        margin-bottom: 11px;
+      }
+
+      .title {
+        font-size: 1.2em;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #333;
+      }
+    }
+
+
+    .social-networks {
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+      }
+    }
+
+  }
+
+  .body {
+    clear: both;
+    margin-top: 0;
+
+    .programs {
+      @includes 'programs';
+    }
+
+  }
+}
