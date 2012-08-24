@@ -1,3 +1,4 @@
 dependencies:
   post:
+    - ls config
     - cp config/aws.yml.ci config/aws.yml
