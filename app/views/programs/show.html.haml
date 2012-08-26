@@ -1,4 +1,5 @@
-= image_tag @program.logo.url(:medium)
+- unless @program.logo.nil?
+  = image_tag @program.logo.url(:medium)
 %h2= @program.name
 %p= @program.description
 

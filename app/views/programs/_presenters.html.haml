@@ -1,4 +1,4 @@
-%h2 Compañeros
+%h2 Locutores
 - users.each do |user|
-  = check_box_tag "program[user_ids][]", user.id, (checked = true if form.object.user_ids.include?(user.id))
+  = check_box_tag "program[user_ids][]", user.id, (checked = true if form.object.user_ids.include?(user.id) || user == current_user)
   = user.name

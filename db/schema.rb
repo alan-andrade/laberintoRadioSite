@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120820004659) do
+ActiveRecord::Schema.define(:version => 20120824021329) do
 
   create_table "assets", :force => true do |t|
     t.integer  "imageable_id"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(:version => 20120820004659) do
 
   add_index "schedules", ["program_id"], :name => "index_schedules_on_program_id"
   add_index "schedules", ["user_id"], :name => "index_schedules_on_user_id"
+
+  create_table "spaces", :force => true do |t|
+    t.integer "day"
+    t.integer "hour"
+    t.integer "minute"
+    t.integer "program_id"
+  end
+
+  add_index "spaces", ["program_id"], :name => "index_spaces_on_program_id"
 
   create_table "users", :force => true do |t|
     t.string  "email",                                  :null => false

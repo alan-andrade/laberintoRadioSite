@@ -1,6 +1,5 @@
-guard 'spork',
-  :cucumber_env => { 'RAILS_ENV' => 'test' },
-  :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork',  cucumber_env: { 'RAILS_ENV' => 'test' },
+                rspec_env:    { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/environments/test.rb')
@@ -28,7 +27,8 @@ guard 'rspec', version: 2, cli: '--drb' do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 
+  watch(%r{^spec/factories/(.+)\.rb$})                { "spec" }
   # Turnip features and steps
-  watch(%r{^spec/acceptance/(.+)\.feature$})
-  watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
+  watch(%r{^features/(.+)\.feature$})
+  watch(%r{^features/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end

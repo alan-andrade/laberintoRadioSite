@@ -1,10 +1,19 @@
-= form_for [ user, program ], html: { multipart: true }  do |form|
+= form_for [ user, program ], html: { multipart: true } do |form|
   = form.fields_for :logo do |t|
     = t.file_field :image
   = form.label :name, 'Nombre'
   = form.text_field :name
   = form.label :description, 'Descripcion'
-  = form.text_area :description
+  = form.text_area :description, rows: 5
+  %br
+
+  = form.fields_for :space do |space|
+    - Time::DAYS_INTO_WEEK.each do |name, number|
+      = space.radio_button :day, program.space.day
+      = name
+      %br
+    = space.select :hour, (7..23).to_a.map{|day| [day, day]}
+    = space.select :minute, [0, 15, 30, 45].map{|m| [m, m]}
 
   = render partial: 'presenters', locals: { users: users ||= User.all, form: form }
 

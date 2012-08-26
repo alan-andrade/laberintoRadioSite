@@ -3,10 +3,10 @@ class ProgramsController < ApplicationController
 
   before_filter :require_user
 
-
   def new
     @users   = User.all
-    @program = Program.new
+    @program = current_user.programs.build
+    @program.build_space
     @program.build_logo
   end
 
@@ -25,6 +25,7 @@ class ProgramsController < ApplicationController
   def edit
     @users   = User.all
     @program = @current_user.programs.find(params[:id])
+    @program.space || @program.build_space
   end
 
   def update
