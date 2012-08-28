@@ -1,7 +1,7 @@
 .presenter
   .header
     .picture
-      = image_tag @user.profile.avatar.url(:medium), width: 170
+      = image_tag @user.profile.avatar.url(:medium), width: 170 rescue nil
     .credentials
       %h1.name= @user.name
       .title Ingeniero en audio
@@ -13,12 +13,17 @@
         = link_to 'linkedin.coom' do
           = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/linkedin-icon.png')
 
-  .body
-    .programs
-      = render @programs
-    .bio
+  .row
+    .body.span6
+      .programs
+        = render @programs
+    .bio.span4
+      %h2 Biografia
       :markdown
         #{@user.bio.body}
+    .span2
+      %h1 sponsor
+
 
 = link_to 'Editar', edit_user_path(@user)
 |

@@ -1,6 +1,6 @@
-- unless @program.logo.nil?
-  = image_tag @program.logo.url(:medium)
+= image_tag @program.logo.url(:medium) rescue nil
 %h2= @program.name
+
 %p= @program.description
 
 = link_to 'Editalo', edit_user_program_path(@current_user, @program)

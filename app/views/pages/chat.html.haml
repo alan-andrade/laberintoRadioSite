@@ -1,14 +1,8 @@
 .row-fluid
   .row
     .span12
-      .jplayer
-      .jaudio
-        %a.btn.btn-large.btn-primary.play{href:'#'}
-          %i.icon-play.icon-white
-        %a.btn.btn-large.pause{href:'#'}
-          %i.icon-pause.pause
-        .no-solution
-          %p Actualiza tu navegador para escucharnos
+      %a.btn.btn-large.btn-primary.play{href:'#'}
+        %i.icon-play.icon-white
   .lr.chat
     .row
       .span8
@@ -34,7 +28,15 @@
       %a.btn.btn-primary.ok{data: {dismiss: 'modal'}, 'tabindex' => 2}
         Ese soy yo!
 
+
 - content_for :js do
-  = javascript_include_tag 'jquery.jplayer/jquery.jplayer.js', 'laberinto.player', 'bootstrap-modal'
+  :javascript
+    $(function(){
+      $('a.play').click(function(e){
+        e.preventDefault();
+        window.open('http://tunein.com/radio/Laberinto-Radio-s140279/');
+      });
+    });
+  = javascript_include_tag 'bootstrap-modal'
   = javascript_include_tag "#{Yetting.chat_server}/socket.io/socket.io.js"
-  = javascript_include_tag 'laberinto.chat', 'chat'
+  = javascript_include_tag 'chat'

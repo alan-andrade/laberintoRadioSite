@@ -1,8 +1,11 @@
 = form.fields_for :avatar, form.object.avatar || form.object.build_avatar do |t|
-  = t.file_field :image
+  - if form.object.avatar.new_record?
+    = t.file_field :image
+  - else
+    = image_tag form.object.avatar.url(:medium)
 
 = form.label :name
 = form.text_field :name
 
-= form.label :nickname
+= form.label :nickname, 'Apodo'
 = form.text_field :nickname

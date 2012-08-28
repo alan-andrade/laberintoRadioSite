@@ -1,4 +1,30 @@
 .program
   %h1.name= program.name
 
+  :css
+    .schedule .active{
+      display: inline-block;
+      padding: 1px 6px 1px 6px;
+      font-weight: bold;
+      border: 1px solid red;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+    }
+
+  .schedule
+    - Space::DAYS.each_with_index do |name, day|
+      %span{class: program.space.day == day ? 'active' : '' }
+        = name[0].upcase
+    |
+    = l program.space.time, format: :just_time
+
+  = image_tag program.logo.url(:thumb) rescue nil
+
+  - program.users.each do |user|
+    = image_tag user.profile.avatar.url(:thumb) rescue nil
+
+  :markdown
+    #{program.description}
+
 %p= link_to 'Editar', edit_user_program_path(@user, program)

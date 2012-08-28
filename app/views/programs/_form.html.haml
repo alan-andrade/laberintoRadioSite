@@ -1,5 +1,5 @@
 = form_for [ user, program ], html: { multipart: true } do |form|
-  = form.fields_for :logo do |t|
+  = form.fields_for :logo, form.object.logo || form.object.build_logo do |t|
     = t.file_field :image
   = form.label :name, 'Nombre'
   = form.text_field :name
@@ -8,8 +8,8 @@
   %br
 
   = form.fields_for :space do |space|
-    - Time::DAYS_INTO_WEEK.each do |name, number|
-      = space.radio_button :day, program.space.day
+    - Space::DAYS.each_with_index do |name, number|
+      = space.radio_button :day, number
       = name
       %br
     = space.select :hour, (7..23).to_a.map{|day| [day, day]}
