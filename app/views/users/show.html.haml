@@ -1,10 +1,9 @@
 .presenter
-  .alert.alert-info
-    = link_to 'Nuevo Programa', new_user_program_path(@user)
-    |
-    = link_to 'Actualizar Perfil', edit_user_path(@user)
-    |
-    = link_to 'Salir', logout_path
+  .well.well-small.nav
+    %ul
+      %li= link_to 'Nuevo Programa', new_user_program_path(@user)
+      %li= link_to 'Actualizar mi perfil', edit_user_path(@user)
+      %li= link_to 'Salir', logout_path
   .clearfix
 
   .header

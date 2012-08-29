@@ -1,9 +1,9 @@
-%h2 Editar mi perfil
-
-= form_for @user, html: { multipart: true } do |f|
+= form_for @user, html: { multipart: true, class: 'form-horizontal' } do |f|
+  %legend Chulea tu perfil
   = f.fields_for :profile do |profile|
     = render partial: 'profiles/form', object: profile
   = render partial: 'form', object: f
 
-  %br
-  = f.submit 'Guardar', class: :btn
+  .form-actions
+    = f.submit 'Guardar', class: 'btn btn-primary'
+    = link_to 'Regresar', myaccount_path, class: 'btn'

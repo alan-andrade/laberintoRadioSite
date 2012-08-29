@@ -1,4 +1,7 @@
-%h2 Locutores
-- users.each do |user|
-  = check_box_tag "program[user_ids][]", user.id, (checked = true if form.object.user_ids.include?(user.id) || user == current_user)
-  = user.name
+.control-group
+  = label_tag 'Locutores', nil,  class: 'control-label'
+  .controls
+    - users.each do |user|
+      %p
+        = check_box_tag "program[user_ids][]", user.id, (checked = true if form.object.user_ids.include?(user.id) || user == current_user)
+        = user.name

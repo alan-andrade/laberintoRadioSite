@@ -1,25 +1,42 @@
-= form_for [ user, program ], html: { multipart: true } do |form|
+= form_for [ user, program ], html: { multipart: true, class: 'form-horizontal'} do |form|
+  %legend Crea tu programa
   = form.fields_for :logo, form.object.logo || form.object.build_logo do |t|
-    - if form.object.logo.persisted?
-      = image_tag form.object.logo.url(:medium)
-    = t.file_field :image
 
-  = form.label :name, 'Nombre'
-  = form.text_field :name
+    .control-group
+      = t.label :image, class: 'control-label' do
+        = t.object.new_record? ? 'Logo' : 'Cambiar logo'
+        - if t.object.persisted?
+          = image_tag form.object.logo.url(:thumb)
+      .controls
+        = t.file_field :image
 
-  = form.label :description, 'Descripcion'
-  = form.text_area :description, rows: 5
-  %br
+    .control-group
+      = form.label :name, 'Nombre', class: 'control-label'
+      .controls
+        = form.text_field :name
+
+    .control-group
+      = form.label :description, 'Descripcion', class: 'control-label'
+      .controls
+        = form.text_area :description, rows: 5
 
   = form.fields_for :space do |space|
-    - Space::DAYS.each_with_index do |name, number|
-      = space.radio_button :day, number
-      = name
-      %br
-    = space.select :hour, (7..23).to_a.map{|day| [day, day]}
-    = space.select :minute, [0, 15, 30, 45].map{|m| [m, m]}
+    .control-group
+      = space.label :day, 'Día de Transmisión' ,class: 'control-label'
+      .controls
+        - Space::DAYS.each_with_index do |name, number|
+          %p
+            = space.radio_button :day, number
+            = name
+
+    .control-group
+      = space.label :time, 'Horario', class: 'control-label'
+      .controls
+        = space.select :hour, (7..23).to_a.map{|day| [day, day]}, {}, class: 'input-mini'
+        = space.select :minute, [0, 15, 30, 45].map{|m| [m, m]}, {}, class: 'input-mini'
 
   = render partial: 'presenters', locals: { users: users ||= User.all, form: form }
 
-  %br
-  = form.submit 'Guardar', class: :btn
+  .form-actions
+    = form.submit 'Que venga la fama!', class: 'btn btn-primary'
+    = link_to 'Regresar', myaccount_path, class: 'btn'

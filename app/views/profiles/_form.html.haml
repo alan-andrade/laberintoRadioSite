@@ -1,24 +1,32 @@
 = form.fields_for :avatar, form.object.avatar || form.object.build_avatar do |t|
-  - if t.object.persisted?
-    = image_tag form.object.avatar.url(:medium)
-    %br
-  = t.label :image, t.object.new_record? ? 'Foto' : 'Cambiar Foto'
-  = t.file_field :image
+  .control-group
+    = t.label :image, class: 'control-label' do
+      = t.object.new_record? ? 'Foto' : 'Cambiar Foto'
+      - if t.object.persisted?
+        = image_tag form.object.avatar.url(:thumb)
+    .controls
+      = t.file_field :image
 
-= form.label :name
-= form.text_field :name
+  .control-group
+    = form.label :name, 'Nombre', class: 'control-label'
+    .controls
+      = form.text_field :name
 
-= form.label :nickname, 'Apodo'
-= form.text_field :nickname
+  .control-group
+    = form.label :nickname, 'Apodo', class: 'control-label'
+    .controls
+      = form.text_field :nickname
 
-= form.label :twitter do
-  %p
-    Twitter
-  %i Ej. alan_andrade  o  napo_coco
-= form.text_field :twitter
+  .control-group
+    = form.label :twitter, class: 'control-label'
+    .controls
+      .input-prepend
+        %span.add-on twitter.com/
+        = form.text_field :twitter, class: 'input-medium'
 
-= form.label :facebook do
-  %p
-    Facebook
-  %i Ej. alan.andrade  o  laberintoradiomexico
-= form.text_field :facebook
+  .control-group
+    = form.label :facebook, class: 'control-label'
+    .controls
+      .input-prepend
+        %span.add-on facebook.com/
+        = form.text_field :facebook, class: 'input-medium'

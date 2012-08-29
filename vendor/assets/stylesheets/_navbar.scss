@@ -1,7 +1,6 @@
 // NAVBAR (FIXED AND STATIC)
 // -------------------------
 
-
 // COMMON STYLES
 // -------------
 
@@ -182,7 +181,7 @@
 
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  @include grid-core-span($gridColumns);
+  @include grid-core-span($gridColumns, $gridColumnWidth, $gridGutterWidth);
 }
 
 // Fixed to top
