@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824021329) do
+ActiveRecord::Schema.define(:version => 20120829032046) do
 
   create_table "assets", :force => true do |t|
     t.integer  "imageable_id"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20120824021329) do
     t.integer "user_id"
     t.string  "name",     :default => "Sin nombre", :null => false
     t.string  "nickname", :default => "",           :null => false
+    t.string  "twitter"
+    t.string  "facebook"
   end
 
   add_index "profiles", ["user_id"], :name => "users_profile_index"

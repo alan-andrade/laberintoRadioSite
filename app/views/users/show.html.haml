@@ -1,17 +1,25 @@
 .presenter
+  .alert.alert-info
+    = link_to 'Nuevo Programa', new_user_program_path(@user)
+    |
+    = link_to 'Actualizar Perfil', edit_user_path(@user)
+    |
+    = link_to 'Salir', logout_path
+  .clearfix
+
   .header
     .picture
-      = image_tag @user.profile.avatar.url(:medium), width: 170 rescue nil
+      = image_tag @user.profile.avatar.url(:medium)
     .credentials
       %h1.name= @user.name
       .title Ingeniero en audio
       .social-networks
-        = link_to 'twitter.com' do
-          = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/twitter-icon.png')
-        = link_to 'facebook.coom' do
-          = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/facebook-icon.png')
-        = link_to 'linkedin.coom' do
-          = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/linkedin-icon.png')
+        - if @user.profile.twitter.present?
+          = link_to @user.profile.twitter_url, target: '_blank' do
+            = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/twitter-icon.png')
+        - if @user.profile.facebook.present?
+          = link_to @user.profile.facebook_url, target: '_blank' do
+            = image_tag('http://icons.iconarchive.com/icons/danleech/simple/48/facebook-icon.png')
 
   .row
     .body.span6
@@ -23,8 +31,3 @@
         #{@user.bio.body}
     .span2
       %h1 sponsor
-
-
-= link_to 'Editar', edit_user_path(@user)
-|
-= link_to 'Nuevo Programa', new_user_program_path(@user)

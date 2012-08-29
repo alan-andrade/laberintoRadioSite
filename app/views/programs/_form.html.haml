@@ -1,8 +1,12 @@
 = form_for [ user, program ], html: { multipart: true } do |form|
   = form.fields_for :logo, form.object.logo || form.object.build_logo do |t|
+    - if form.object.logo.persisted?
+      = image_tag form.object.logo.url(:medium)
     = t.file_field :image
+
   = form.label :name, 'Nombre'
   = form.text_field :name
+
   = form.label :description, 'Descripcion'
   = form.text_area :description, rows: 5
   %br

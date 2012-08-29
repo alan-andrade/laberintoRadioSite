@@ -42,6 +42,12 @@
               %a{href: quienes_path}
                 %i.icon-user.icon-white
                 Quienes Somos
+            - if current_user.present?
+              %li
+                %a{href: myaccount_path}
+                  %i.icon-globe.icon-white
+                  Mi cuenta
+
           %ul.nav.pull-right
             %li
               %a.brand
