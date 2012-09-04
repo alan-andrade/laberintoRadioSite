@@ -1,5 +1,6 @@
 .program
-  %h1.name= program.name
+  %h1.name
+    =link_to program.name, program_path(program)
 
   :css
     .schedule .active{
@@ -27,4 +28,4 @@
   :markdown
     #{program.description}
 
-%p= link_to 'Editar', edit_user_program_path(@user, program)
+%p= link_to 'Editar programa', edit_user_program_path(@user, program)
