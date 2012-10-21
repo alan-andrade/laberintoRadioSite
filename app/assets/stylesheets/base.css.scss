@@ -1,0 +1,64 @@
+@import "partials/variables";
+@import "compass";
+@import "susy";
+@import "normalize";
+
+@include normalize;
+@include establish-baseline;
+
+body{
+  font-family: $normal-font-type;
+}
+
+h1,h2,h3,h4,h5{ font-family: $headers-font-type; }
+
+.wrapper{
+  padding-top: 20px;
+  @include container($media-layout, $media-ipad, $media-iphone);
+}
+
+header.top-header{
+  margin-bottom: 25px;
+  @include clearfix;
+
+  .logo{
+    @include push(          $total-columns / 4);
+    @include span-columns(  $total-columns / 2);
+    @include suffix(        $total-columns / 4);
+  }
+
+}
+
+nav.left-nav{
+
+  text-align: right;
+  @include span-columns(4);
+
+  & ul{
+    @include no-bullets;
+
+    &.social-networks{
+      float: right;
+      @include horizontal-list;
+    }
+
+  }
+
+  li{
+    padding-top:    1em;
+    padding-bottom: 1em;
+  }
+
+  a {
+    @include link-colors($normal, $hover, $active, $visited, $focus);
+    text-decoration: none;
+  }
+
+}
+
+.content{
+  @include span-columns(19);
+}
+
+@import "base-ipad";
+@import "base-iphone";

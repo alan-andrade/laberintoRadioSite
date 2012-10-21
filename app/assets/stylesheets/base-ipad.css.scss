@@ -1,0 +1,42 @@
+@include at-breakpoint($media-ipad){
+
+  .wrapper{
+    .logo{
+      @include push(         $ipad-columns / 4);
+      @include span-columns( $ipad-columns / 2);
+      @include suffix(       $ipad-columns / 4);
+    }
+
+    nav.left-nav{
+      @include span-columns( $ipad-columns );
+      text-align: left;
+
+      ul.social-networks{
+        @include inline-list;
+        & > li {
+          padding: 5px;
+        }
+      }
+
+      ul.menu{
+        @include inline-block-list-container;
+
+        & > li {
+          @include inline-block-list-item;
+          @include text-shadow;
+          padding-top:    0.1em;
+          padding-bottom: 0.1em;;
+          padding-left:  0.7em;
+          padding-right: 0.7em;
+        }
+      }
+
+    }
+
+  }
+
+  .content{
+    @include span-columns( $ipad-columns );
+  }
+
+}

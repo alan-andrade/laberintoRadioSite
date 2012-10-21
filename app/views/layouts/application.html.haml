@@ -5,52 +5,21 @@
     %meta{charset: 'utf8'}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
     %title Laberinto Radio, cambiando a Mexico
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'base', media: 'all'
     = yield :js
     = csrf_meta_tags
-    - if Rails.env.production?
-      :javascript
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-32915181-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
+    = google_analytics
   %body
-    %nav.navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %ul.nav
-            %li
-              = link_to index_path do
-                %i.icon-home.icon-white
-                Inicio
-            %li
-              = link_to chat_path do
-                %i.icon-signal.icon-white
-                Transmision
-            %li
-              = link_to programacion_path do
-                %i.icon-calendar.icon-white
-                Programacion
-            %li
-              %a{href: quienes_path}
-                %i.icon-user.icon-white
-                Quienes Somos
-            - if current_user.present?
-              %li
-                %a{href: myaccount_path}
-                  %i.icon-globe.icon-white
-                  Mi cuenta
+    .wrapper
+      %header.top-header
+        = image_tag 'laberinto-header.png', class: :logo
+      %nav.left-nav
+        %ul.menu
+          %li= link_to 'Inicio', root_path
+          %li= link_to 'Programas', programacion_path
+          %ul.social-networks
+            %li= link_to image_tag('http://icons.iconarchive.com/icons/danleech/simple/32/twitter-icon.png'), 'http://www.twitter.com/laberinto_radio'
+            %li= link_to image_tag('http://icons.iconarchive.com/icons/danleech/simple/32/facebook-icon.png'), 'http://www.facebook.com/laberintoradiomexico'
 
-          %ul.nav.pull-right
-            %li
-              %a.brand
-                Laberinto Radio
-    .container{style:'margin-top: 60px;'}
-      = yield
+      .content
+        =yield

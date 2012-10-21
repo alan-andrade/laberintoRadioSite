@@ -1,0 +1,35 @@
+// Susy variables
+$total-columns: 24;
+$column-width: 2em;
+$gutter-width: 2em;
+$grid-padding: 10px;
+
+// font
+$base-font-size: 16px;
+$base-line-height: 24px;
+$relative-font-sizing: true;
+
+/*@import url(http://fonts.googleapis.com/css?family=Merriweather);*/
+/*@import url(http://fonts.googleapis.com/css?family=Lato);*/
+/*@import url(http://fonts.googleapis.com/css?family=Droid+Sans);*/
+
+$normal-font-type:  'Merriweather', sans-serif;
+$headers-font-type: 'Lato',         sans-serif;
+$logo-font-type:    'Droid Sans',   sans-serif;
+
+
+// links
+$normal:  #333;
+$hover:   #bfbfbf;
+$visited: $normal;
+$active:  #7f7f7f;
+$focus:   #404040;
+
+
+// responsive
+$ipad-columns:    $total-columns/2;
+$iphone-columns:  $total-columns/3;
+
+$media-layout:  $total-columns;
+$media-ipad:    $ipad-columns   60em;
+$media-iphone:  $iphone-columns 30em;

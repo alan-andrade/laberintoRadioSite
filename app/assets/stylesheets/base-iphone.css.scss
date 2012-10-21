@@ -1,0 +1,30 @@
+@include at-breakpoint( $media-iphone ){
+  .wrapper{
+
+    header.top-header{
+      margin-bottom: 5px;;
+
+      .logo{
+        @include push(1);
+        @include span-columns(6);
+      }
+
+    }
+
+    nav.left-nav{
+      text-align: center;
+
+      & > ul.menu > li{  // hack to break the include form ipad. lame.
+        float: none;
+        display: block;
+        padding: 0.1em;
+        margin:  0.5em 0;
+      }
+
+    }
+
+    .content{
+      @include span-columns( $iphone-columns );
+    }
+  }
+}
