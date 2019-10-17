@@ -10,7 +10,7 @@ gem 'authlogic'
 gem 'mysql2', '~> 0.3.0'
 gem 'yettings'
 gem 'aws-sdk', '~> 1.3.4'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip', '~> 4.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
